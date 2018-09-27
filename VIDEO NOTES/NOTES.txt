@@ -1,0 +1,16 @@
+goal of this chapter
+
+- to demonstrate how asp.net core can serve up static files.
+
+- reference sean wildermuths tutorial - say that 
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+
+can be used 'out of the box' - i.e no red squigglys using VS Code 1.24. In wildermuths tutorial he had
+to add a reference etc...
+
+BIG POINT - the order of execution of UseDefaultFiles(), UseStaticFiles is important, otherwise you need to specify
+'index.html' in URL
+
+ also say that a HTML 5 template is provided by VS Code - just add the file then start typing <!DOCTYPE html>
+demonstrate this!!

@@ -1,6 +1,6 @@
 using System;
 
-namespace Chapter2.Models
+namespace CarPriceComparison.Models
 {
     public class ErrorViewModel
     {
