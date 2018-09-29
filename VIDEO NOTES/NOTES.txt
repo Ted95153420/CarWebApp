@@ -1,6 +1,6 @@
 goal of this chapter
 
-- to demonstrate how asp.net core can serve up static files.
+- to demonstrate how asp.net core can serve up static files and to show a tiny bit of Java Script
 
 - reference sean wildermuths tutorial - say that 
     app.UseDefaultFiles();
@@ -14,3 +14,15 @@ BIG POINT - the order of execution of UseDefaultFiles(), UseStaticFiles is impor
 
  also say that a HTML 5 template is provided by VS Code - just add the file then start typing <!DOCTYPE html>
 demonstrate this!!
+
+
+BOWER
+   - in days of old (ASP.Net 4 and below) you would use nuget to install the JQuery Library
+   - dont do this! use Bower! this is the way forward and in line what the web dev community actually use.
+   - think of Bower as a package manager
+   - (first of all, install node js by going to their website https://nodejs.org/en/)
+   - you need node.js because bower is written in Node.js (I downloaded version 10.11.0 of Node.js installer, 6.4.1
+      of npm)
+   - use https://maxo.blog/adding-bower-to-asp-net-project-visual-studio-code/ for reference
+   -when bower was installed I got the impression it is not really used anymore - see 'OnBowerInstall.jpg'
+   
