@@ -16,7 +16,7 @@ BIG POINT - the order of execution of UseDefaultFiles(), UseStaticFiles is impor
 demonstrate this!!
 
 
-BOWER
+BOWER/Javascript
    - in days of old (ASP.Net 4 and below) you would use nuget to install the JQuery Library
    - dont do this! use Bower! this is the way forward and in line what the web dev community actually use.
    - think of Bower as a package manager
@@ -25,4 +25,7 @@ BOWER
       of npm)
    - use https://maxo.blog/adding-bower-to-asp-net-project-visual-studio-code/ for reference
    -when bower was installed I got the impression it is not really used anymore - see 'OnBowerInstall.jpg'
+   -demonstrate the fact you can delete from wwwroot/lib, then just do a restore using bower install
+   -demonstrate javascript working (displays Hello Ted in a label)
+   -briefly talk about immediately invokable function and the global scope.
    
