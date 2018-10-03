@@ -38,9 +38,15 @@ namespace CarPriceComparison
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //Chapter 3 - note Use Default and Use Static
-            app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseMvc( config =>{
+                config.MapRoute(
+                    name    : "Default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new {controller = "Home", action = "Index"}
+                );
+            });
          }
     }
 }

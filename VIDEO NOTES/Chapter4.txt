@@ -1,0 +1,4 @@
+Goal of this chapter is to enable MVC.
+
+Views/Home/Inndex_Orig_Renamed.cshtml is the original index file (auto generated when an MVC
+app was created - I kept this because there are some useful links in there).
