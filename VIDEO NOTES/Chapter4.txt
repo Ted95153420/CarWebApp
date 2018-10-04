@@ -6,3 +6,9 @@ app was created - I kept this because there are some useful links in there).
 -so i enabled MVC by altering Startup.cs
 -basically, services.AddMVC is ALREADY added to the ConfigureServices Method
 -just make sure that app.usemvc is added in the configure method - this is where routing is set up
+
+-ISSUES Encountered.
+- _ViewStart.cshtml has Layout = _Layout
+-the above uses _Layout.cshtml as a layout file - the trouble is I dont want this right now 
+-if I do Layout = null or Layout = "", then the css isnt applied to Views/Home/Index.cshtml
+-learn more abut razr and talk about resolution in my next video.
