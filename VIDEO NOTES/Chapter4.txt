@@ -2,3 +2,7 @@ Goal of this chapter is to enable MVC.
 
 Views/Home/Inndex_Orig_Renamed.cshtml is the original index file (auto generated when an MVC
 app was created - I kept this because there are some useful links in there).
+
+-so i enabled MVC by altering Startup.cs
+-basically, services.AddMVC is ALREADY added to the ConfigureServices Method
+-just make sure that app.usemvc is added in the configure method - this is where routing is set up
