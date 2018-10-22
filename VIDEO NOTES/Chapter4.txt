@@ -12,3 +12,13 @@ app was created - I kept this because there are some useful links in there).
 -the above uses _Layout.cshtml as a layout file - the trouble is I dont want this right now 
 -if I do Layout = null or Layout = "", then the css isnt applied to Views/Home/Index.cshtml
 -learn more abut razr and talk about resolution in my next video.
+
+2nd October 2018.
+  _Layout.cshtml needed modifying. It is already referencing my .css and .js files :-
+  <link rel="stylesheet" href="~/css/site.css" />
+  <script src="~/js/site.js" asp-append-version="true"></script>
+
+  all i did was just comment out the parts of the _Layout file I do not want to see.
+  not ideal but this isnt a razor tutorial. 
+  END RESULT :site looks like it should and is using MVC
+  Site Loads with errors.
