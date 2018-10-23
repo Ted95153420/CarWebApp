@@ -1,0 +1,14 @@
+Chapter5 goals...
+
+USING LAYOUTS and Hooking up to an API
+
+Talk about what you get for 'free' when you create a new MVC project specifically
+_ViewStart.cshtml which specifies the layout file for all of the website.
+_Layout.cshtml for the general stuff and use of @RenderBody as a 'place holder' so content
+can be 'injected'
+
+23rd October 2018
+   Refactored _Layout.cshtml - no longer boiler plate that comes with project but contains the general 
+   layout for this web application. (basically moced the header and footer out of Index.cshtml and placed in 
+   _Layout.cshtml, then added an @RenderBody to _Layout.cshtml so it 'knows' where to render page specific
+   content)

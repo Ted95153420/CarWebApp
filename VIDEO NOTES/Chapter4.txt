@@ -13,7 +13,7 @@ app was created - I kept this because there are some useful links in there).
 -if I do Layout = null or Layout = "", then the css isnt applied to Views/Home/Index.cshtml
 -learn more abut razr and talk about resolution in my next video.
 
-2nd October 2018.
+22nd October 2018.
   _Layout.cshtml needed modifying. It is already referencing my .css and .js files :-
   <link rel="stylesheet" href="~/css/site.css" />
   <script src="~/js/site.js" asp-append-version="true"></script>
