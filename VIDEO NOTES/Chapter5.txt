@@ -12,3 +12,7 @@ can be 'injected'
    layout for this web application. (basically moced the header and footer out of Index.cshtml and placed in 
    _Layout.cshtml, then added an @RenderBody to _Layout.cshtml so it 'knows' where to render page specific
    content)
+
+28th October 2018
+    Added Contact Page - .js is not loading and therefore not changing the welcome message. Fix these
+    reference errors before continuing!
