@@ -14,5 +14,12 @@ can be 'injected'
    content)
 
 28th October 2018
-    Added Contact Page - .js is not loading and therefore not changing the welcome message. Fix these
+    Added Contact Page - site.js is not loading and therefore not changing the welcome message. Fix these
     reference errors before continuing!
+
+31stOctober 2018 - hint of a clue. site.js is now loading. I changed the reference in index.cshtml
+    from    : <script type="text/javascript" src="~wwwroot/js/site.js">
+    to      : <script type="text/javascript" src="~/js/site.js">
+
+    and this worked just fine, trouble is, doent work when I use the ~/path... in the _Layout page.
+    MIGHT be that I dont have a 'Development' environment set up. explore this but dont waste too much time....
