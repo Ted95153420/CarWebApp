@@ -21,5 +21,14 @@ can be 'injected'
     from    : <script type="text/javascript" src="~wwwroot/js/site.js">
     to      : <script type="text/javascript" src="~/js/site.js">
 
-    and this worked just fine, trouble is, doent work when I use the ~/path... in the _Layout page.
+    and this worked just fine, trouble is, dosen/t work when I use the ~/path... in the _Layout page.
     MIGHT be that I dont have a 'Development' environment set up. explore this but dont waste too much time....
+
+2nd November 2018
+    Above comment (from 31st November) not valid. It was nothing to do with the Development environment
+    It was due to the fact I didnt have bower set up properly. A quick read of 
+    https://www.loginradius.com/engineering/how-to-use-bower-to-install-bootstrap/ solved the problem for me.
+    SANITY CHECK :-
+    -demonstrate the fact you can delete from wwwroot/lib, then just do a restore using bower install
+    after doing the above, I'd expect 'bootstrap' 'jQuery' and 'underscore' folders underneath the lib folder.
+    does this happen? If so why? (when i type the 'bower list' command, there is no mention of jQuery)

@@ -1,8 +1,22 @@
 {
-    "name": "ccrpricecomparison",
-    "private": true,
-    "dependencies": {
-      "underscore": "~1.9.1",
-      "jquery": "~3.3.1"
-    }
-  }
+  "name": "tedsbowerpackage",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.3"
+  },
+  "homepage": "https://github.com/Ted95153420/CarWebApp",
+  "authors": [
+    "Ted95153420 <edward.milne@gmail.com>"
+  ],
+  "description": "Stuff needed for this project",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "wwwroot/lib",
+    "test",
+    "tests"
+  ]
+}
