@@ -32,3 +32,16 @@ can be 'injected'
     -demonstrate the fact you can delete from wwwroot/lib, then just do a restore using bower install
     after doing the above, I'd expect 'bootstrap' 'jQuery' and 'underscore' folders underneath the lib folder.
     does this happen? If so why? (when i type the 'bower list' command, there is no mention of jQuery)
+
+2nd November 2018
+    Worth a mention that I used Tag helpers in the links (in _Layout.cshtml)
+    <a asp-controller="home" asp-action="Index">Home</a>
+    <a asp-controller="home" asp-action="Contact">Contact</a>
+    thats it! no further action required - (project.assets.json already has the correct dependency
+    added - obj\Microsoft.AspNetCore.Mvc.TagHelpers and is already included in _ViewImports.cshtml)
+
+    specifying the controller and action is better than hard coding link in. There may be logic in the 
+    action method that changes the URL of page that is displayed for example.... 
+
+    Random Question : WHY do I need script tags on both index.cshtml and Contact.cshtml? Why cant I have it in 
+    the _Layout.cs.html - needed so display name propery i.e Welcome Ted! NOT Welcome NOT SET BY JAVASCRIPT

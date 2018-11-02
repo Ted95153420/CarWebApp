@@ -17,10 +17,11 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <script src="~/main.js"></script>
 </head>
 <body>
     <div class="header">
+        <a asp-controller="home" asp-action="Index">Home</a>
+        <a asp-controller="home" asp-action="Contact">Contact</a>
         <form>
             <label id="welcomelabel"> NOT SET BY JAVASCRIPT </label>
             <label>Select Vehicle Details      : </label>
