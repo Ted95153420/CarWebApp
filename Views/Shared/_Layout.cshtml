@@ -36,5 +36,8 @@
     <div class="footer">
         &copy;2015 Car Company Ltd
     </div>
+    <!--note the 'scripts' section does not have to be resolved but will be if you have a scripts
+    section on the page - see Contact.cshtml for an example -->
+    @RenderSection("scripts", false)
 </body>
 </html>

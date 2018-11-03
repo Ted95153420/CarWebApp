@@ -54,5 +54,6 @@ can be 'injected'
 
     PLURALSIGHT - half way through 'Using Validation' lesson
     added validation to the view model. Success (see attributes in model)
-    PROB : trying to add reference to package 'jquery-validation-unobtrusive' in Contact.cshtml
-        No.js file like in Wildermuths video??? 
+    PROB : added references (jquery validation js files to contact.cshtml)
+           click send email without filling any fields - expect to see validation
+           <span>'s to appear. They dont
