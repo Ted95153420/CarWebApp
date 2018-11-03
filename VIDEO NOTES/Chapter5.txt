@@ -51,3 +51,8 @@ can be 'injected'
     @model CarPriceComparison.ViewModels.ContactViewModel
     also, note that the fields in the view now use the attribute/tag helper 'asp-for', which basically
     specifies what field to map to in the ViewModel 
+
+    PLURALSIGHT - half way through 'Using Validation' lesson
+    added validation to the view model. Success (see attributes in model)
+    PROB : trying to add reference to package 'jquery-validation-unobtrusive' in Contact.cshtml
+        No.js file like in Wildermuths video??? 
