@@ -57,3 +57,9 @@ can be 'injected'
     PROB : added references (jquery validation js files to contact.cshtml)
            click send email without filling any fields - expect to see validation
            <span>'s to appear. They dont
+    SOLUTION : point out the fact that validation had to be added as
+               <span asp-validation-for="Name"></span>
+               and NOT
+               <span asp-validation-for = "Name">
+
+               otherwise validation messages do not appear!
