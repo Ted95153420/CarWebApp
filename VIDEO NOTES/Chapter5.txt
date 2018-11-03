@@ -45,3 +45,9 @@ can be 'injected'
 
     Random Question : WHY do I need script tags on both index.cshtml and Contact.cshtml? Why cant I have it in 
     the _Layout.cs.html - needed so display name propery i.e Welcome Ted! NOT Welcome NOT SET BY JAVASCRIPT
+
+3rd November 2018
+    Bound the ContactViewModel to Contact.cshtml using the follosing line in Contact.cshtml :-
+    @model CarPriceComparison.ViewModels.ContactViewModel
+    also, note that the fields in the view now use the attribute/tag helper 'asp-for', which basically
+    specifies what field to map to in the ViewModel 
