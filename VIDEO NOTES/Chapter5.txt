@@ -72,3 +72,13 @@ can be 'injected'
     Added IMailService and injected it into HomeController so DebugMailService can be used
     Big to understand is the difference between Services.AddTransient, Services.AddScoped
     and Services.AddSingleton in Startup.ConfigureServices 
+
+    Notice How in startup I have written
+    var builder = new ConfigurationBuilder()
+                .AddJsonFile("config.json");
+
+    Why can't this be
+    ConfigurationBuilder builder = new ConfigurationBuilder()
+                                .AddJsonFile("config.json") ???
+
+    LAST CODED up to 5m05 into 'Completing The Form;

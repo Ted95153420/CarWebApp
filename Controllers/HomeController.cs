@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using CarPriceComparison.Models;
 using CarPriceComparison.ViewModels;
 using CarPriceComparison.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace CarPriceComparison.Controllers
 {
     public class HomeController : Controller
     {
         private IMailService _mailService;
+        private IConfigurationRoot _config;
 
-        public HomeController(IMailService mailService_)
+        public HomeController(IMailService mailService_, IConfigurationRoot config_)
         {
             _mailService = mailService_;
+            _config = config_;
         }
         public IActionResult Index()
         {
@@ -39,7 +42,7 @@ namespace CarPriceComparison.Controllers
         [HttpPost]
         public IActionResult Contact(ContactViewModel contactData_)
         {
-            _mailService.SendMail(contactData_.EMail,"edward.milne@gmail.com", "hello there!", contactData_.Message);
+            _mailService.SendMail(_config["MailSetings:ToAddress"],contactData_.EMail, "hello there!", contactData_.Message);
             return View();
         }
 

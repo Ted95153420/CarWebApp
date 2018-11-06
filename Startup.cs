@@ -15,9 +15,17 @@ namespace CarPriceComparison
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private IConfigurationRoot _config;
+        private IHostingEnvironment _env;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env_)
         {
+            _env = env_;
             Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(_env.ContentRootPath)
+                .AddJsonFile("config.json");
+            _config = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -32,6 +40,7 @@ namespace CarPriceComparison
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSingleton(_config);
             //TO DO - understand the difference between AddTransiend, AddScoped
             //and AddSingleton
             services.AddScoped<IMailService, DebugMailService>();
