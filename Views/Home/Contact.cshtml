@@ -8,7 +8,8 @@
     <script src="~/lib/jquery-validation-unobtrusive/src/jquery.validate.unobtrusive.js"></script>
 }
 <h2>Contact Me</h2>
-<form>
+<form method="post">
+    <span asp-validation-summary="ModelOnly"></span>
     <div>
         <label asp-for="Name">Name</label>
         <input asp-for="Name"/>

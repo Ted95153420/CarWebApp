@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CarPriceComparison.Services;
 
 namespace CarPriceComparison
 {
@@ -31,7 +32,9 @@ namespace CarPriceComparison
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            //TO DO - understand the difference between AddTransiend, AddScoped
+            //and AddSingleton
+            services.AddScoped<IMailService, DebugMailService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

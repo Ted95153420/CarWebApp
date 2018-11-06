@@ -63,3 +63,12 @@ can be 'injected'
                <span asp-validation-for = "Name">
 
                otherwise validation messages do not appear!
+
+6th November 2018
+    added [HttpPost] attribute to the second implementation of HomeController.Contact
+    added method=post attribute in Contact.cshtml i.e :-
+    <form method="post">
+
+    Added IMailService and injected it into HomeController so DebugMailService can be used
+    Big to understand is the difference between Services.AddTransient, Services.AddScoped
+    and Services.AddSingleton in Startup.ConfigureServices 

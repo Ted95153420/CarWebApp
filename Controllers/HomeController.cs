@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CarPriceComparison.Models;
+using CarPriceComparison.ViewModels;
+using CarPriceComparison.Services;
 
 namespace CarPriceComparison.Controllers
 {
     public class HomeController : Controller
     {
+        private IMailService _mailService;
+
+        public HomeController(IMailService mailService_)
+        {
+            _mailService = mailService_;
+        }
         public IActionResult Index()
         {
             return View();
@@ -25,6 +33,13 @@ namespace CarPriceComparison.Controllers
         public IActionResult Contact()
         {
             //ViewData["Message"] = "Your contact page.";
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel contactData_)
+        {
+            _mailService.SendMail(contactData_.EMail,"edward.milne@gmail.com", "hello there!", contactData_.Message);
             return View();
         }
 
