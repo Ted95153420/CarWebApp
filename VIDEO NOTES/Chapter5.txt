@@ -81,4 +81,21 @@ can be 'injected'
     ConfigurationBuilder builder = new ConfigurationBuilder()
                                 .AddJsonFile("config.json") ???
 
-    LAST CODED up to 5m05 into 'Completing The Form;
+    TALK about AddEnvironment Variables and how it will overwrite settings in the config.json
+    file - this is useful for when deploying - IT can set environment cars easily. revisit chapter 
+    'completing the form' for more on this. NOTE - I havent entered any env variables yet.
+
+    var builder = new ConfigurationBuilder()
+                .SetBasePath(_env.ContentRootPath)
+                .AddJsonFile("config.json")
+                .AddEnvironmentVariables()
+
+    9th November 2018
+        added ViewBag.UserMessage in home controller
+       -upon succesful form submission and displayed this in the view
+       - did further error check in controller (ModelState.IsValid)
+       - note you can add an eror to the model state controller side if you want
+       -both for a property and a summary - example gives was an AOL address
+       -I didnt bother but worth demoing in vid....
+
+    

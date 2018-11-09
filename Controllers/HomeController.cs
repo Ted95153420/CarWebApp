@@ -42,7 +42,12 @@ namespace CarPriceComparison.Controllers
         [HttpPost]
         public IActionResult Contact(ContactViewModel contactData_)
         {
-            _mailService.SendMail(_config["MailSetings:ToAddress"],contactData_.EMail, "hello there!", contactData_.Message);
+            if(ModelState.IsValid)
+            {
+                _mailService.SendMail(_config["MailSettings:ToAddress"],contactData_.EMail, "hello there!", contactData_.Message);
+                ModelState.Clear();
+                ViewBag.UserMessage = "Message succesfully sent";
+            }
             return View();
         }
 
