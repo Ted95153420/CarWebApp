@@ -90,12 +90,27 @@ can be 'injected'
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables()
 
-    9th November 2018
-        added ViewBag.UserMessage in home controller
-       -upon succesful form submission and displayed this in the view
-       - did further error check in controller (ModelState.IsValid)
-       - note you can add an eror to the model state controller side if you want
-       -both for a property and a summary - example gives was an AOL address
-       -I didnt bother but worth demoing in vid....
+9th November 2018
+    added ViewBag.UserMessage in home controller
+    -upon succesful form submission and displayed this in the view
+    - did further error check in controller (ModelState.IsValid)
+    - note you can add an eror to the model state controller side if you want
+    -both for a property and a summary - example gives was an AOL address
+    -I didnt bother but worth demoing in vid....
+
+10th November 2018
+    commented out header, body, footer and input sections in site.js and let
+    bootstrap.css take overwrite
+
+    added bootstrap.js reference as well as bootstrap.cs (apparently needs both to
+    work properly)
+
+    added font-awesome to bower.json and added reference to _Layout.cshtml
+
+    BROKE - header - now displays 'NOT SET BY JAVA SCRIPT'
+
+    refactored - moved car search form to home page rather than having in header. 
+
+    
 
     
