@@ -6,7 +6,8 @@
     "underscore": "~1.9.1",
     "jquery": "~3.3.1",
     "jquery-validation" : "~1.17.0",
-    "jquery-validation-unobtrusive" : "~3.2.11"
+    "jquery-validation-unobtrusive" : "~3.2.11",
+    "font-awesome" : "~5.5.0"
 
   },
   "homepage": "https://github.com/Ted95153420/CarWebApp",
