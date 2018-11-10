@@ -1,11 +1,11 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
-body {
+/*body {
     font-family: sans-serif;
     font-size: 14px;
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 
 /* Wrapping element */
@@ -26,22 +26,22 @@ body {
     width: 100%;
 }
 
-.footer{
+/*.footer{
     background-color: darkgray;
-    color: whitesmoke;
+    color: whitesmoke;*/
     /*
     worth pointing out that the below does not work in Chrome 69.0.3497.100
     position: fixed;
     bottom: 0;
     */
-    padding-top: 5px;
+  /*  padding-top: 5px;
     padding-bottom: 5px;
     position: absolute;
     bottom: 0;
     width: 100%;
-}
+}*/
 
-.header{
+/*.header{
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: darkgray;
@@ -49,11 +49,11 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
-}
+}*/
 
-input[type=text], input[type=password],textarea{
+/*input[type=text], input[type=password],textarea{
     width: 150px;
-}
+} */
 
 /* QR code generator */
 #qrCode {

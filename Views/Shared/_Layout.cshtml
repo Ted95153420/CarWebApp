@@ -22,21 +22,14 @@
     <div class="header">
         <a asp-controller="home" asp-action="Index">Home</a>
         <a asp-controller="home" asp-action="Contact">Contact</a>
-        <form>
-            <label id="welcomelabel"> NOT SET BY JAVASCRIPT </label>
-            <label>Select Vehicle Details      : </label>
-            <label>Make</label>
-            <input></input>
-            <label> Model</label>
-            <input></input>
-            <input type="submit" value="Search Kamloops"/>
-        </form>
     </div>
     @RenderBody();
     <div class="footer">
         &copy;2015 Car Company Ltd
     </div>
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--note the 'scripts' section does not have to be resolved but will be if you have a scripts
     section on the page - see Contact.cshtml for an example -->
     @RenderSection("scripts", false)

@@ -8,6 +8,6 @@
 //Chapter 3 - talk about immediately invokable function and why we implement this
 //hint : so there are no variable 'clashes' in the global scope
 (function() {
-    var element = document.getElementById("welcomelabel");
+    var element = document.getElementById("usernameheader");
     element.innerHTML = "Welcome Ted! ";
 })();
