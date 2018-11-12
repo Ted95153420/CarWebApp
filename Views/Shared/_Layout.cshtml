@@ -9,23 +9,31 @@
     <title>@ViewBag.Title</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/svg-with-js/css/fa-svg-with-js.js /">
+        <link rel="stylesheet" href="~/lib/font-awesome/svg-with-js/css/fa-svg-with-js.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment> 
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/lib/font-awesome/svg-with-js/css/fa-svg-with-js.min.js /">
+        <link rel="stylesheet" href="~/lib/font-awesome/svg-with-js/css/fa-svg-with-js.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <div class="header">
-        <a asp-controller="home" asp-action="Index">Home</a>
-        <a asp-controller="home" asp-action="Contact">Contact</a>
-    </div>
-    @RenderBody();
+    
+    <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="home" asp-action="Contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    @RenderBody()
     <div class="footer">
         &copy;2015 Car Company Ltd
     </div>
