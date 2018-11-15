@@ -7,8 +7,8 @@
     "jquery": "~3.3.1",
     "jquery-validation" : "~1.17.0",
     "jquery-validation-unobtrusive" : "~3.2.11",
-    "font-awesome" : "~5.5.0"
-
+    "font-awesome" : "~5.5.0",
+    "bootswatch" : "4.1.3+3"
   },
   "homepage": "https://github.com/Ted95153420/CarWebApp",
   "authors": [

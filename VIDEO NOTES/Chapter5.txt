@@ -111,6 +111,13 @@ can be 'injected'
 
     refactored - moved car search form to home page rather than having in header. 
 
+15th November
+    Added bootswatch to bower.json. Note unconventional versioning
+    "bootswatch" : "4.1.3+3"
+
+    the 4.1.3 is the current version of bootstrap. the + 3 is the version of bootswatch
+    you want...
+
     
 
     
