@@ -13,16 +13,19 @@ namespace CarPriceComparison.Controllers
 {
     public class HomeController : Controller
     {
+        private VehicleContext _vehicleContext;
         private IMailService _mailService;
         private IConfigurationRoot _config;
 
-        public HomeController(IMailService mailService_, IConfigurationRoot config_)
+        public HomeController(IMailService mailService_, IConfigurationRoot config_, VehicleContext vehicleContext_)
         {
+            _vehicleContext = vehicleContext_;
             _mailService = mailService_;
             _config = config_;
         }
         public IActionResult Index()
         {
+            var vehicleData = _vehicleContext.VehicleMakes.ToList();
             return View();
         }
 

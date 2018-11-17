@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CarPriceComparison.Services;
+using CarPriceComparison.Models;
 
 namespace CarPriceComparison
 {
@@ -43,9 +44,13 @@ namespace CarPriceComparison
             });
 
             services.AddSingleton(_config);
-            //TO DO - understand the difference between AddTransiend, AddScoped
+            //TO DO - understand the difference between AddTransient, AddScoped
             //and AddSingleton
             services.AddScoped<IMailService, DebugMailService>();
+
+            //register the DbContext
+            services.AddDbContext<VehicleContext>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

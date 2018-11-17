@@ -120,6 +120,19 @@ can be 'injected'
 
     - dont forget to comment out the footer styling in site.js! (bootswatch now takes care of this)
 
+17th November
+    Added a DbContext (VehicleContext.cs) after I did that
+    I registered the context in Startup.ConfigureServices 
+
+    //register the DbContext
+    services.AddDbContext<VehicleContext>();
+
+    After registration, the dbContext is injectable so I injected into
+    HomeController - here it can be used to query the database.
+
+    NOW VehicleContext.OnConfiguring needs a database connection string. Pick up again in 
+    'Using The Db Context" - 5:31
+
     
 
     

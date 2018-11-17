@@ -1,5 +1,8 @@
 {
   "MailSettings": {
     "ToAddress": "edward.milne@gmail.com"    
+  },
+  "ConnectionStrings": {
+    "VehicleContextConnection":"Server="
   }
 }
