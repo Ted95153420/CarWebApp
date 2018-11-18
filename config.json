@@ -3,6 +3,6 @@
     "ToAddress": "edward.milne@gmail.com"    
   },
   "ConnectionStrings": {
-    "VehicleContextConnection":"Server="
+    "VehicleContextConnection":"Server=(localdb)\\MSSQLLocalDB;Database=VehicleIntelDb;Trusted_Connection=True;MultipleActiveResultSets=True;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;"
   }
 }

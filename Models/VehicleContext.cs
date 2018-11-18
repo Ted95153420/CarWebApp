@@ -6,7 +6,7 @@ namespace CarPriceComparison.Models
     public class VehicleContext : DbContext
     {
         private IConfigurationRoot _config;
-        public VehicleContext(IConfigurationRoot config_)
+        public VehicleContext(IConfigurationRoot config_, DbContextOptions options_) : base(options_)
         {
             _config = config_;    
         }
@@ -16,7 +16,7 @@ namespace CarPriceComparison.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(_config[""]);    
+            optionsBuilder.UseSqlServer(_config["ConnectionStrings:VehicleContextConnection"]);    
         }
     }
 }
