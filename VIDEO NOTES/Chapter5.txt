@@ -131,7 +131,12 @@ can be 'injected'
     HomeController - here it can be used to query the database.
 
     NOW VehicleContext.OnConfiguring needs a database connection string. Pick up again in 
-    'Using The Db Context" - 5:31
+    
+
+18th November 
+    Critical is creating a db to conect to. At this point in time there is a db specified in the command
+    line, but this database doesnt physically exist.
+    Talk about the command "dotnet ef"
 
     
 
