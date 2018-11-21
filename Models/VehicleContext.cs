@@ -18,5 +18,16 @@ namespace CarPriceComparison.Models
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(_config["ConnectionStrings:VehicleContextConnection"]);    
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VehicleModel>()
+            .HasOne(p => p.Make)
+            .WithMany(b => b.Models)
+            .HasForeignKey(p => p.VehicleMakeForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+        }
+
     }
 }
