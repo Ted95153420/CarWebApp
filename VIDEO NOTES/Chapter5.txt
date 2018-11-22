@@ -152,6 +152,8 @@ can be 'injected'
             .OnDelete(DeleteBehavior.Cascade);
         }
 
+    added vehicle makes - got up to THE END of Chevrolet
+
     
 
     
