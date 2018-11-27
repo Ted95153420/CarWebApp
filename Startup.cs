@@ -51,6 +51,8 @@ namespace CarPriceComparison
             //register the DbContext
             services.AddDbContext<VehicleContext>();
 
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

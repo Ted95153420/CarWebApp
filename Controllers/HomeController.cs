@@ -13,20 +13,20 @@ namespace CarPriceComparison.Controllers
 {
     public class HomeController : Controller
     {
-        private VehicleContext _vehicleContext;
+        private IVehicleRepository _vehicleRepository;
         private IMailService _mailService;
         private IConfigurationRoot _config;
 
-        public HomeController(IMailService mailService_, IConfigurationRoot config_, VehicleContext vehicleContext_)
+        public HomeController(IMailService mailService_, IConfigurationRoot config_, IVehicleRepository vehicleRepo_)
         {
-            _vehicleContext = vehicleContext_;
+            _vehicleRepository = vehicleRepo_;
             _mailService = mailService_;
             _config = config_;
         }
         public IActionResult Index()
         {
-            var vehicleData = _vehicleContext.VehicleMakes.ToList();
-            return View();
+            var vehicleData = _vehicleRepository.GetAllMakes();
+            return View(vehicleData);
         }
 
         // public IActionResult About()

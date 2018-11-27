@@ -154,6 +154,21 @@ can be 'injected'
 
     added vehicle makes - got up to THE END of Chevrolet
 
+26th November.
+   Introduced the repository pattern - this is a huge concept. Basically means we are not accessing
+   the dbcontext directly. The repo is a sort of wrapper round the context.
+
+   Look how the context is now injected into the controller (last parameter) :-
+   public HomeController(IMailService mailService_, IConfigurationRoot config_, IVehicleRepository vehicleRepo_)
+
+   we USED to inject the dbcontext in. now its an interface representing the repo. Interfaces can be mocked
+   too for use in testing. 
+
+   the repo is registered in startup.cs :-
+   services.AddScoped<IVehicleRepository, VehicleRepository>();
+
+
+
     
 
     
