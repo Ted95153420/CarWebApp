@@ -1,4 +1,4 @@
-
+@model IEnumerable<CarPriceComparison.Models.VehicleMake>
 <!DOCTYPE <!DOCTYPE html>
 
 <h2 class="col-md-8 offset-md-2">Search Kamloops for sold vehicles</h2>
@@ -13,6 +13,23 @@
                 </div>
                 <div class="col">
                     <input class="btn btn-success" type="submit" value="Search Kamloops"/>
+                </div>
+
+                @{
+                    List<VehicleMake> vehicleMakes= new List<VehicleMake>();
+                    foreach (var item in Model)
+                    {
+                        vehicleMakes.Add(item);
+                    }
+                }
+
+                <div class="col">
+                    <ul>
+                        @foreach (var item in Model)
+                        {
+                            <li>@item.Make</li>
+                        }
+                    </ul>
                 </div>
             </div>
         </form>
