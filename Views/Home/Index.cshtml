@@ -6,16 +6,22 @@
         <form method="post" class="col-md-8 offset-md-2">
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Make"></input>
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Model"></input>
-                </div>
+                    @Html.DropDownList("Test", new SelectList(Model, "Id", "Make"), 
+                                       "-- Select Make --", 
+                                       new { htmlAttributes = new { @class = "form-control" } })
+                </div> 
+                <div class="col"> 
+                    @Html.DropDownList("Test", new SelectList(Model, "Id", "Make"), 
+                                       "-- Select Model --", 
+                                       new { htmlAttributes = new { @class = "form-control" } })
+                </div> 
                 <div class="col">
                     <input class="btn btn-success" type="submit" value="Search Kamloops"/>
                 </div>
 
-                @{
+                
+
+                <!--@{
                     List<VehicleMake> vehicleMakes= new List<VehicleMake>();
                     foreach (var item in Model)
                     {
@@ -30,7 +36,7 @@
                             <li>@item.Make</li>
                         }
                     </ul>
-                </div>
+                </div> -->
             </div>
         </form>
     </div>

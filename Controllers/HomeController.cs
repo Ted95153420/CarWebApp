@@ -25,7 +25,9 @@ namespace CarPriceComparison.Controllers
         }
         public IActionResult Index()
         {
-            var vehicleData = _vehicleRepository.GetAllMakes();
+            var vehicleData = from v in _vehicleRepository.GetAllMakes()
+                                  orderby v.Make
+                                  select v;
             return View(vehicleData);
         }
 
