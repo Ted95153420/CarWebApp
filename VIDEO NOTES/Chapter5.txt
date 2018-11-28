@@ -167,6 +167,14 @@ can be 'injected'
    the repo is registered in startup.cs :-
    services.AddScoped<IVehicleRepository, VehicleRepository>();
 
+27th November - added @html.dropdownlist for the vehicle make in the main view.
+    Notice how the vehicle make listing is sorted in the HomeController using a simple
+    LINQ expression :-
+
+    var vehicleData = from v in _vehicleRepository.GetAllMakes()
+                                  orderby v.Make
+                                  select v;
+
 
 
     
