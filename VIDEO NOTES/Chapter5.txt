@@ -175,6 +175,11 @@ can be 'injected'
                                   orderby v.Make
                                   select v;
 
+28th November - Added GetModelById(int id_); method to VehicleRepository.cs
+                (and a definition in IVehicleRepository.cs). This will help us
+                select the correct list of models for whatever make is selected.
+                Also of note is the new MakeandModelVM.cs in the Models folder.
+
 
 
     
