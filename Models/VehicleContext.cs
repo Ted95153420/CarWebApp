@@ -13,6 +13,8 @@ namespace CarPriceComparison.Models
 
         public DbSet<VehicleMake> VehicleMakes {get; set;}
 
+        public DbSet<VehicleModel> VehicleModels {get; set;}
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

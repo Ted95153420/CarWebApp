@@ -31,6 +31,12 @@ namespace CarPriceComparison.Controllers
             return View(vehicleData);
         }
 
+        public IEnumerable<VehicleModel> GetModelList(int makeID_)
+        {
+            IEnumerable<VehicleModel> modelList = _vehicleRepository.GetModelById(makeID_);
+            return modelList;
+        }
+
         // public IActionResult About()
         // {
         //     ViewData["Message"] = "Your application description page.";
