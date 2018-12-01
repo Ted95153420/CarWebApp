@@ -180,6 +180,10 @@ can be 'injected'
                 select the correct list of models for whatever make is selected.
                 Also of note is the new MakeandModelVM.cs in the Models folder.
 
+1st December - site.js - event listner added for car make dropdown 
+now sisplays alert every time the make is changed. Work in progress (goal to 
+implement cascading deletes)
+
 
 
     

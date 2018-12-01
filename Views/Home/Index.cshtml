@@ -1,12 +1,16 @@
 @model IEnumerable<CarPriceComparison.Models.VehicleMake>
 <!DOCTYPE <!DOCTYPE html>
 
+@section scripts{
+    <script type="text/javascript" src="~/js/site.js"></script>
+}
+
 <h2 class="col-md-8 offset-md-2">Search Kamloops for sold vehicles</h2>
     <div class="row">
         <form method="post" class="col-md-8 offset-md-2">
             <div class="form-row">
                 <div class="col">
-                    @Html.DropDownList("Test", new SelectList(Model, "Id", "Make"), 
+                    @Html.DropDownList("VehicleMakeDropDown", new SelectList(Model, "Id", "Make"), 
                                        "-- Select Make --", 
                                        new { htmlAttributes = new { @class = "form-control" } })
                 </div> 
@@ -18,25 +22,6 @@
                 <div class="col">
                     <input class="btn btn-success" type="submit" value="Search Kamloops"/>
                 </div>
-
-                
-
-                <!--@{
-                    List<VehicleMake> vehicleMakes= new List<VehicleMake>();
-                    foreach (var item in Model)
-                    {
-                        vehicleMakes.Add(item);
-                    }
-                }
-
-                <div class="col">
-                    <ul>
-                        @foreach (var item in Model)
-                        {
-                            <li>@item.Make</li>
-                        }
-                    </ul>
-                </div> -->
             </div>
         </form>
     </div>
