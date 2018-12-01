@@ -183,6 +183,32 @@ can be 'injected'
 1st December - site.js - event listner added for car make dropdown 
 now sisplays alert every time the make is changed. Work in progress (goal to 
 implement cascading deletes)
+Talking point - i used :
+
+$("#VehicleMakeDropDown").change(
+        function(){
+            alert("you just selected something different");
+        }
+    );
+
+2 issues with the above. 1. .change is deprecated 2. code actually called twice
+- once upon clicking different make and once upon selection actually cahnging. has 
+a bad smell about it. A step in the right direction, but not quite right.
+
+to resolve the issues listed above use :-
+question : what does e.stopImmediatePropagation do?
+make sure it is understood rather than soething just copied
+/pasted of stackoverflow!! note the more generic
+.on("change") too!
+
+(function() {
+    $("#VehicleMakeDropDown").on("change",
+        function(e){
+            e.stopImmediatePropagation();
+            alert("you just selected something different");
+        }
+    ); 
+})();
 
 
 
