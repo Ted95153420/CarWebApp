@@ -182,7 +182,7 @@ can be 'injected'
 
 1st December - site.js - event listner added for car make dropdown 
 now sisplays alert every time the make is changed. Work in progress (goal to 
-implement cascading deletes)
+implement cascading dropdowns)
 Talking point - i used :
 
 $("#VehicleMakeDropDown").change(

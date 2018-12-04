@@ -8,7 +8,7 @@
 //Chapter 3 - talk about immediately invokable function and why we implement this
 //hint : so there are no variable 'clashes' in the global scope
 (function() {
-    $("#VehicleMakeDropDown").on("change",
+    $("#VehMakesDD").on("change",
         function(e){
             e.stopImmediatePropagation();
             alert("you just selected something different");

@@ -8,6 +8,7 @@ using CarPriceComparison.Models;
 using CarPriceComparison.ViewModels;
 using CarPriceComparison.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CarPriceComparison.Controllers
 {
@@ -25,12 +26,17 @@ namespace CarPriceComparison.Controllers
         }
         public IActionResult Index()
         {
-            var vehicleData = from v in _vehicleRepository.GetAllMakes()
-                                  orderby v.Make
-                                  select v;
-            return View(vehicleData);
+            ViewBag.VehicleMakes = new SelectList(GetOrderedVehicleMakeList(), "Id", "Make");
+            return View();
         }
 
+        public IEnumerable<VehicleMake> GetOrderedVehicleMakeList()
+        {
+            IEnumerable<VehicleMake> vehicleMakes = from v in _vehicleRepository.GetAllMakes()
+                                  orderby v.Make
+                                  select v;
+            return vehicleMakes;
+        }
         public IEnumerable<VehicleModel> GetModelList(int makeID_)
         {
             IEnumerable<VehicleModel> modelList = _vehicleRepository.GetModelById(makeID_);

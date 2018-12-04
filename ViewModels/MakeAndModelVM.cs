@@ -1,6 +1,6 @@
 using System;
 
-namespace CarPriceComparison.Models
+namespace CarPriceComparison.ViewModels
 {
     public class MakeAndModelVM
     {

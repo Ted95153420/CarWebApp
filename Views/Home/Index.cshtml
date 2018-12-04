@@ -1,4 +1,4 @@
-@model IEnumerable<CarPriceComparison.Models.VehicleMake>
+@model CarPriceComparison.ViewModels.MakeAndModelVM
 <!DOCTYPE <!DOCTYPE html>
 
 @section scripts{
@@ -10,15 +10,19 @@
         <form method="post" class="col-md-8 offset-md-2">
             <div class="form-row">
                 <div class="col">
-                    @Html.DropDownList("VehicleMakeDropDown", new SelectList(Model, "Id", "Make"), 
-                                       "-- Select Make --", 
-                                       new { htmlAttributes = new { @class = "form-control" } })
+                    @if(ViewBag.VehicleMakes != null)
+                    {
+                        @Html.DropDownList("VehMakesDD", ViewBag.VehicleMakes as SelectList,
+                                            "-- Select Make --", 
+                                            new { htmlAttributes = new { @class = "form-control" } })
+                    }
                 </div> 
-                <div class="col"> 
-                    @Html.DropDownList("Test", new SelectList(Model, "Id", "Make"), 
-                                       "-- Select Model --", 
-                                       new { htmlAttributes = new { @class = "form-control" } })
-                </div> 
+
+                <div class="col">
+                    @Html.DropDownList("VehModelsDD", new SelectList(""),
+                                            "-- Select Model --", 
+                                            new { htmlAttributes = new { @class = "form-control" } })
+                </div>
                 <div class="col">
                     <input class="btn btn-success" type="submit" value="Search Kamloops"/>
                 </div>
