@@ -11,7 +11,8 @@
     $("#VehMakesDD").on("change",
         function(e){
             e.stopImmediatePropagation();
-            alert("you just selected something different");
+            var makeId = $(this).val();
+            alert(makeId)
         }
     ); 
 })();
