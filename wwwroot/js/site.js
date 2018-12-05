@@ -12,7 +12,17 @@
         function(e){
             e.stopImmediatePropagation();
             var makeId = $(this).val();
-            alert(makeId)
+            debugger
+            $.ajax({
+                type : "Post",
+                url : "/Home/GetModelList?makeID_="+makeId,
+                contentType:"html",
+                success: function(response){
+                    debugger
+                    $("#VehModelsDD").empty();
+                    $("#VehModelsDD").append(response);
+                }
+            })
         }
     ); 
 })();

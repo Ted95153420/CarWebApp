@@ -37,10 +37,11 @@ namespace CarPriceComparison.Controllers
                                   select v;
             return vehicleMakes;
         }
-        public IEnumerable<VehicleModel> GetModelList(int makeID_)
+        public ActionResult GetModelList(int makeID_)
         {
             IEnumerable<VehicleModel> modelList = _vehicleRepository.GetModelById(makeID_);
-            return modelList;
+            ViewBag.ModelList = new SelectList(modelList, "Id", "Model");
+            return PartialView("ModelListingPartial");
         }
 
         // public IActionResult About()
