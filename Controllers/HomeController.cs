@@ -41,7 +41,7 @@ namespace CarPriceComparison.Controllers
         {
             IEnumerable<VehicleModel> modelList = _vehicleRepository.GetModelById(makeID_);
             ViewBag.ModelList = new SelectList(modelList, "Id", "Model");
-            return PartialView("ModelListingPartial");
+            return PartialView("_ModelListingPartial");
         }
 
         // public IActionResult About()

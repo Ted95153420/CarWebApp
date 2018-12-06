@@ -224,6 +224,11 @@ make sure it is understood rather than soething just copied
     with the minimised version an exception is thrown.
     'Uncuaght type exception $.ajax is not a function'
 
+5th December - Vehicle Make / Model cascading select works
+
+Pain point : VehicleContext.VehicleModels - runtime error saying this property was not recognised
+Solution - do a migration then update the database.
+
 
 
     
