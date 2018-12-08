@@ -1,0 +1,15 @@
+8th December 2018
+-- added VehicleController.cs :-
+
+public class VehicleController : Controller
+    {
+        [HttpGet("api/vehicles")]
+        public IActionResult Get()
+        {
+            return Ok(new VehicleMake(){Id=600, Make="Blah"});
+        }
+    }
+
+NOTE you could return Json instead of IActionReuls if you wanted, but that doesnt give you a way
+of returning a bad request if an exception is thrown (for example, with IActionReut you can return,
+'Bad' for instance)
