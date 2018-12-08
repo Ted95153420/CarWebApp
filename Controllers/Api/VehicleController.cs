@@ -5,9 +5,9 @@ namespace CarPriceComparison.Controllers.Api{
     public class VehicleController : Controller
     {
         [HttpGet("api/vehicles")]
-        public JsonResult Get()
+        public IActionResult Get()
         {
-            return Json(new VehicleMake(){Id=600, Make="Blah"});
+            return Ok(new VehicleMake(){Id=600, Make="Blah"});
         }
     }
 }
