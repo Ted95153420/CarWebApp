@@ -2,12 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 using CarPriceComparison.Models;
 
 namespace CarPriceComparison.Controllers.Api{
-    public class VehicleController : Controller
-    {
+    public class VehicleController : Controller    {
+        private IVehicleRepository _vehicleRepository;
+        public VehicleController(IVehicleRepository vehicleRepository_)
+        {
+            _vehicleRepository = vehicleRepository_;  
+        }
         [HttpGet("api/vehicles")]
         public IActionResult Get()
         {
-            return Ok(new VehicleMake(){Id=600, Make="Blah"});
+            return Ok(_vehicleRepository.GetAllMakes());
         }
     }
 }

@@ -10,6 +10,10 @@ public class VehicleController : Controller
         }
     }
 
-NOTE you could return Json instead of IActionReuls if you wanted, but that doesnt give you a way
+NOTE you could return Json instead of IActionResult if you wanted, but that doesnt give you a way
 of returning a bad request if an exception is thrown (for example, with IActionReut you can return,
 'Bad' for instance)
+
+28th December 2018
+   Altered VehicleController.Get so that it retreives data from the database
+   this was achieved by adding a constructor and injecting IVehicleRepository

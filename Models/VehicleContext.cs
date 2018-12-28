@@ -29,6 +29,20 @@ namespace CarPriceComparison.Models
             .HasForeignKey(p => p.VehicleMakeForeignKey)
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<City>()
+            .HasOne(p => p.Country)
+            .WithMany(b => b.Cities)
+            .HasForeignKey(p => p.CountryForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Dealer>()
+            .HasOne(p => p.City)
+            .WithMany(b => b.Dealerships)
+            .HasForeignKey(p => p.CityForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
         }
 
     }
