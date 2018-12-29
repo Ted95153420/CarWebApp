@@ -17,3 +17,40 @@ of returning a bad request if an exception is thrown (for example, with IActionR
 28th December 2018
    Altered VehicleController.Get so that it retreives data from the database
    this was achieved by adding a constructor and injecting IVehicleRepository
+
+   Added ne models. Now the back end db contains new tables..
+   Country
+   City
+   Dealer 
+   Vehicle
+
+   Country, City and Dealer -> relationships defined in VehicleContext.OnModelCreating
+   (see below) - this was not done for vehicle - instead I marked the foreign keys with 
+   'ForeignKey' attributes since there were may foreign keys in this table (dont know 
+   how to specify multiple fks with the modelbuilder method llisted below). Also I am unsure
+   why the fk properties in Vehicle need to be virtual? Find out why! (Suggest pluralsight course
+   on EF Core)
+
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VehicleModel>()
+            .HasOne(p => p.Make)
+            .WithMany(b => b.Models)
+            .HasForeignKey(p => p.VehicleMakeForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<City>()
+            .HasOne(p => p.Country)
+            .WithMany(b => b.Cities)
+            .HasForeignKey(p => p.CountryForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Dealer>()
+            .HasOne(p => p.City)
+            .WithMany(b => b.Dealerships)
+            .HasForeignKey(p => p.CityForeignKey)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Cascade);
+        }
