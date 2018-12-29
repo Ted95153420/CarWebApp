@@ -4,14 +4,16 @@ using CarPriceComparison.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarPriceComparison.Migrations
 {
     [DbContext(typeof(VehicleContext))]
-    partial class VehicleContextModelSnapshot : ModelSnapshot
+    [Migration("20181229000428_Country_city_Dealership_Tidied_VehicleTable")]
+    partial class Country_city_Dealership_Tidied_VehicleTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

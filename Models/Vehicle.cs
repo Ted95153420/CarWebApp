@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarPriceComparison.Models
 {
     public class Vehicle
     {
+        [Key]
         public int Id {get; set;}
         
         //Fuel Economy is in L/Km
@@ -11,12 +14,12 @@ namespace CarPriceComparison.Models
         public float HighwayFuelEconomy {get;set;}
         public float ListPrice {get;set;}
         public float SoldPrice{get;set;}
-        public VehicleMake VehicleMake{get; set;}
-        public int MakeForeignKey {get;set;}
-        public VehicleModel VehicleModel{get;set;}
-        public int ModelForeignKey {get; set;}
-        public Dealer Dealer {get; set;}
-        public int DealerForeignKey {get;set;}
+        [ForeignKey("VehicleMakeId")]
+        public virtual VehicleMake MakeForeignKey {get;set;}
+        [ForeignKey("VehicleModelId")]
+        public virtual VehicleModel ModelForeignKey {get;set;}
+        [ForeignKey("VehicleDealerId")]
+        public virtual Dealer DealerForeignKey{get;set;}
         public string Notes{get; set;}
         public string Color{get; set;}
     }
