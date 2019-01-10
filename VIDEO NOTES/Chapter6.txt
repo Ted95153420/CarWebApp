@@ -54,3 +54,18 @@ of returning a bad request if an exception is thrown (for example, with IActionR
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
         }
+
+10th January 2019
+   Added reference to Automapper
+   used in api controller to convert viewmodel to model in preparation to saving to db (POST)
+
+   AutoMapper configured in startup.configure as :-
+
+   Mapper.Initialize(config =>
+            {
+                config.CreateMap<VehicleViewModel, Vehicle>().ReverseMap();
+            });
+
+    Note the call to ReverseMap - this essentially makes a TWO way maping between 
+    VehicleViewMOdel <-> Vehicle
+    

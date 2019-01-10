@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CarPriceComparison.Services;
 using CarPriceComparison.Models;
+using AutoMapper;
+using CarPriceComparison.ViewModels;
 
 namespace CarPriceComparison
 {
@@ -60,7 +62,10 @@ namespace CarPriceComparison
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
-
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<VehicleViewModel, Vehicle>().ReverseMap();
+            });
             app.UseMvc( config =>{
                 config.MapRoute(
                     name    : "Default",

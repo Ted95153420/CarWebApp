@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using CarPriceComparison.Models;
 using CarPriceComparison.ViewModels;
+using AutoMapper;
+using System;
 
 namespace CarPriceComparison.Controllers.Api{
 
@@ -14,7 +16,14 @@ namespace CarPriceComparison.Controllers.Api{
         [HttpGet("")]
         public IActionResult GetVehicleMakes()
         {
-            return Ok(_vehicleRepository.GetAllMakes());
+            try{
+                return Ok(_vehicleRepository.GetAllMakes());
+            }
+            catch(Exception ex)
+            {
+                //TODO - add logging
+                return BadRequest("An Error Ocurred");
+            }
         }
 
         [HttpPost("")]
@@ -23,7 +32,9 @@ namespace CarPriceComparison.Controllers.Api{
             if (ModelState.IsValid)
             {
                 //ultimately we want our new vehicle data saving to the database....
-                return Ok(true); 
+                var newVehicle = Mapper.Map<Vehicle>(vehicleData_);
+                //mapper mapping from model to ViewMOdel so no actual model data send back.
+                return Created($"api/Vehicles/{vehicleData_.Notes}", Mapper.Map<VehicleViewModel>(vehicleData_)); 
             } 
 
             return BadRequest("Bad Data");
