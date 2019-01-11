@@ -7,6 +7,7 @@ namespace CarPriceComparison.Models
     public class Vehicle
     {
         [Key]
+        public int SourceId {get; set;}
         public int Id {get; set;}
         
         //Fuel Economy is in L/Km
@@ -15,9 +16,9 @@ namespace CarPriceComparison.Models
         public float ListPrice {get;set;}
         public float SoldPrice{get;set;}
         [ForeignKey("VehicleMakeId")]
-        public virtual VehicleMake MakeForeignKey {get;set;}
+        public virtual VehicleMakes MakeForeignKey {get;set;}
         [ForeignKey("VehicleModelId")]
-        public virtual VehicleModel ModelForeignKey {get;set;}
+        public virtual VehicleModels ModelForeignKey {get;set;}
         [ForeignKey("VehicleDealerId")]
         public virtual Dealer DealerForeignKey{get;set;}
         public string Notes{get; set;}

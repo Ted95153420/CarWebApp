@@ -6,7 +6,7 @@ namespace CarPriceComparison.ViewModels
 {
     public class VehicleViewModel
     {
-        
+        public int TESTViewModel {get; set;}
         //Fuel Economy is in L/Km
         public float CityFuelEconomy {get;set;}
         public float HighwayFuelEconomy {get;set;}

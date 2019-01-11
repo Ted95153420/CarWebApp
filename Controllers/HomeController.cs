@@ -30,16 +30,16 @@ namespace CarPriceComparison.Controllers
             return View();
         }
 
-        public IEnumerable<VehicleMake> GetOrderedVehicleMakeList()
+        public IEnumerable<VehicleMakes> GetOrderedVehicleMakeList()
         {
-            IEnumerable<VehicleMake> vehicleMakes = from v in _vehicleRepository.GetAllMakes()
+            IEnumerable<VehicleMakes> vehicleMakes = from v in _vehicleRepository.GetAllMakes()
                                   orderby v.Make
                                   select v;
             return vehicleMakes;
         }
         public ActionResult GetModelList(int makeID_)
         {
-            IEnumerable<VehicleModel> modelList = _vehicleRepository.GetModelById(makeID_);
+            IEnumerable<VehicleModels> modelList = _vehicleRepository.GetModelById(makeID_);
             ViewBag.ModelList = new SelectList(modelList, "Id", "Model");
             return PartialView("_ModelListingPartial");
         }

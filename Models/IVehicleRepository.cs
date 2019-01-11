@@ -4,8 +4,8 @@ namespace CarPriceComparison.Models
 {
     public interface IVehicleRepository
     {
-        IEnumerable<VehicleMake> GetAllMakes();
+        IEnumerable<VehicleMakes> GetAllMakes();
 
-        IEnumerable<VehicleModel> GetModelById(int id_);
+        IEnumerable<VehicleModels> GetModelById(int id_);
     }
 }

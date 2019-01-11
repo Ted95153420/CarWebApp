@@ -11,9 +11,9 @@ namespace CarPriceComparison.Models
             _config = config_;    
         }
 
-        public DbSet<VehicleMake> VehicleMakes {get; set;}
+        public DbSet<VehicleMakes> VehicleMakes {get; set;}
 
-        public DbSet<VehicleModel> VehicleModels {get; set;}
+        public DbSet<VehicleModels> VehicleModels {get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,7 +23,7 @@ namespace CarPriceComparison.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<VehicleModel>()
+            modelBuilder.Entity<VehicleModels>()
             .HasOne(p => p.Make)
             .WithMany(b => b.Models)
             .HasForeignKey(p => p.VehicleMakeForeignKey)

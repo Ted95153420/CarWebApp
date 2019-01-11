@@ -10,12 +10,12 @@ namespace CarPriceComparison.Models
         {
             _vehicleContext = dbContext_;
         }
-        public IEnumerable<VehicleMake> GetAllMakes()
+        public IEnumerable<VehicleMakes> GetAllMakes()
         {
             return _vehicleContext.VehicleMakes.ToList();
         }
 
-        public IEnumerable<VehicleModel> GetModelById(int vehicleMakeId_)
+        public IEnumerable<VehicleModels> GetModelById(int vehicleMakeId_)
         {
 
             return from v in _vehicleContext.VehicleModels.ToList()
