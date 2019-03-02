@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarPriceComparison.Migrations
 {
-    public partial class Country_city_Dealership : Migration
+    public partial class initial_attempt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,6 +18,19 @@ namespace CarPriceComparison.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Country", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VehicleMakes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Make = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VehicleMakes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,6 +49,26 @@ namespace CarPriceComparison.Migrations
                         name: "FK_City_Country_CountryForeignKey",
                         column: x => x.CountryForeignKey,
                         principalTable: "Country",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VehicleModels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Model = table.Column<string>(nullable: true),
+                    VehicleMakeForeignKey = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VehicleModels", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VehicleModels_VehicleMakes_VehicleMakeForeignKey",
+                        column: x => x.VehicleMakeForeignKey,
+                        principalTable: "VehicleMakes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -74,12 +107,8 @@ namespace CarPriceComparison.Migrations
                     HighwayFuelEconomy = table.Column<float>(nullable: false),
                     ListPrice = table.Column<float>(nullable: false),
                     SoldPrice = table.Column<float>(nullable: false),
-                    VehicleMakeId = table.Column<int>(nullable: true),
-                    MakeForeignKey = table.Column<int>(nullable: false),
                     VehicleModelId = table.Column<int>(nullable: true),
-                    ModelForeignKey = table.Column<int>(nullable: false),
-                    DealerId = table.Column<int>(nullable: true),
-                    DealerForeignKey = table.Column<int>(nullable: false),
+                    VehicleDealerId = table.Column<int>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     Color = table.Column<string>(nullable: true)
                 },
@@ -87,15 +116,9 @@ namespace CarPriceComparison.Migrations
                 {
                     table.PrimaryKey("PK_Vehicle", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vehicle_Dealer_DealerId",
-                        column: x => x.DealerId,
+                        name: "FK_Vehicle_Dealer_VehicleDealerId",
+                        column: x => x.VehicleDealerId,
                         principalTable: "Dealer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Vehicle_VehicleMakes_VehicleMakeId",
-                        column: x => x.VehicleMakeId,
-                        principalTable: "VehicleMakes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -117,19 +140,19 @@ namespace CarPriceComparison.Migrations
                 column: "CityForeignKey");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehicle_DealerId",
+                name: "IX_Vehicle_VehicleDealerId",
                 table: "Vehicle",
-                column: "DealerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vehicle_VehicleMakeId",
-                table: "Vehicle",
-                column: "VehicleMakeId");
+                column: "VehicleDealerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vehicle_VehicleModelId",
                 table: "Vehicle",
                 column: "VehicleModelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VehicleModels_VehicleMakeForeignKey",
+                table: "VehicleModels",
+                column: "VehicleMakeForeignKey");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -141,7 +164,13 @@ namespace CarPriceComparison.Migrations
                 name: "Dealer");
 
             migrationBuilder.DropTable(
+                name: "VehicleModels");
+
+            migrationBuilder.DropTable(
                 name: "City");
+
+            migrationBuilder.DropTable(
+                name: "VehicleMakes");
 
             migrationBuilder.DropTable(
                 name: "Country");

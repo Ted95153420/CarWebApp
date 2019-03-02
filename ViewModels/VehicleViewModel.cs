@@ -6,14 +6,11 @@ namespace CarPriceComparison.ViewModels
 {
     public class VehicleViewModel
     {
-        public int TESTViewModel {get; set;}
         //Fuel Economy is in L/Km
         public float CityFuelEconomy {get;set;}
         public float HighwayFuelEconomy {get;set;}
         public float ListPrice {get;set;}
         public float SoldPrice{get;set;}
-        [Required]
-        public int MakeForeignKey {get;set;}
         [Required]
         public int ModelForeignKey {get;set;}
         [Required]

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPriceComparison.Migrations
 {
     [DbContext(typeof(VehicleContext))]
-    [Migration("20181229000428_Country_city_Dealership_Tidied_VehicleTable")]
-    partial class Country_city_Dealership_Tidied_VehicleTable
+    [Migration("20190212140407_initial_attempt")]
+    partial class initial_attempt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,22 +96,18 @@ namespace CarPriceComparison.Migrations
 
                     b.Property<int?>("VehicleDealerId");
 
-                    b.Property<int?>("VehicleMakeId");
-
                     b.Property<int?>("VehicleModelId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleDealerId");
 
-                    b.HasIndex("VehicleMakeId");
-
                     b.HasIndex("VehicleModelId");
 
                     b.ToTable("Vehicle");
                 });
 
-            modelBuilder.Entity("CarPriceComparison.Models.VehicleMake", b =>
+            modelBuilder.Entity("CarPriceComparison.Models.VehicleMakes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,7 +120,7 @@ namespace CarPriceComparison.Migrations
                     b.ToTable("VehicleMakes");
                 });
 
-            modelBuilder.Entity("CarPriceComparison.Models.VehicleModel", b =>
+            modelBuilder.Entity("CarPriceComparison.Models.VehicleModels", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -163,18 +159,14 @@ namespace CarPriceComparison.Migrations
                         .WithMany("Vehicles")
                         .HasForeignKey("VehicleDealerId");
 
-                    b.HasOne("CarPriceComparison.Models.VehicleMake", "MakeForeignKey")
-                        .WithMany()
-                        .HasForeignKey("VehicleMakeId");
-
-                    b.HasOne("CarPriceComparison.Models.VehicleModel", "ModelForeignKey")
+                    b.HasOne("CarPriceComparison.Models.VehicleModels", "ModelForeignKey")
                         .WithMany()
                         .HasForeignKey("VehicleModelId");
                 });
 
-            modelBuilder.Entity("CarPriceComparison.Models.VehicleModel", b =>
+            modelBuilder.Entity("CarPriceComparison.Models.VehicleModels", b =>
                 {
-                    b.HasOne("CarPriceComparison.Models.VehicleMake", "Make")
+                    b.HasOne("CarPriceComparison.Models.VehicleMakes", "Make")
                         .WithMany("Models")
                         .HasForeignKey("VehicleMakeForeignKey")
                         .OnDelete(DeleteBehavior.Cascade);
