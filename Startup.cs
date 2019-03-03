@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +8,7 @@ using CarPriceComparison.Services;
 using CarPriceComparison.Models;
 using AutoMapper;
 using CarPriceComparison.ViewModels;
+using CarPriceComparison.Resolvers;
 
 namespace CarPriceComparison
 {
@@ -61,11 +57,12 @@ namespace CarPriceComparison
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //test commit comment - can safely be deleted
+            //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
             Mapper.Initialize(config =>
             {
-                config.CreateMap<VehicleViewModel, Vehicle>().ReverseMap();
+                config.CreateMap<VehicleViewModel, Vehicle>()
+                .ForMember(dest => dest.ModelForeignKey, opt => opt.MapFrom<VehicleModelResolver>()).ReverseMap();
             });
             app.UseMvc( config =>{
                 config.MapRoute(
