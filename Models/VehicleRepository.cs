@@ -15,6 +15,12 @@ namespace CarPriceComparison.Models
             return _vehicleContext.VehicleMakes.ToList();
         }
 
+        public IEnumerable<Dealer> GetDealerById(int dealerId_)
+        {
+            return from v in _vehicleContext.Dealers.ToList()
+                                .Where(x => x.Id==dealerId_) select v;
+        }
+
         public IEnumerable<VehicleModels> GetModelById(int vehicleMakeId_)
         {
 

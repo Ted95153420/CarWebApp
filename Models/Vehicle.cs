@@ -6,6 +6,10 @@ namespace CarPriceComparison.Models
 {
     public class Vehicle
     {
+        public Vehicle()
+        {
+            
+        }
         [Key]
         public int Id {get; set;}
         //Fuel Economy is in L/Km

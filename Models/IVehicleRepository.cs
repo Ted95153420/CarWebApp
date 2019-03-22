@@ -7,5 +7,7 @@ namespace CarPriceComparison.Models
         IEnumerable<VehicleMakes> GetAllMakes();
 
         IEnumerable<VehicleModels> GetModelById(int id_);
+
+        IEnumerable<Dealer> GetDealerById(int id_);
     }
 }

@@ -62,6 +62,7 @@ namespace CarPriceComparison
             Mapper.Initialize(config =>
             {
                 config.CreateMap<VehicleViewModel, Vehicle>()
+                .ForMember(dest => dest.DealerForeignKey, opt => opt.MapFrom<DealerResolver>())
                 .ForMember(dest => dest.ModelForeignKey, opt => opt.MapFrom<VehicleModelResolver>()).ReverseMap();
             });
             app.UseMvc( config =>{

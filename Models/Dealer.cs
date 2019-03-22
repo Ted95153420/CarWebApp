@@ -4,6 +4,10 @@ namespace CarPriceComparison.Models
 {
     public class Dealer
     {
+        public Dealer()
+        {
+            
+        }
         public int Id {get; set;}
         public string DealerName {get; set;}
         public string StreetAddress{get; set;}

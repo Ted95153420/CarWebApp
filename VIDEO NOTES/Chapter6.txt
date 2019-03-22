@@ -69,3 +69,13 @@ of returning a bad request if an exception is thrown (for example, with IActionR
     Note the call to ReverseMap - this essentially makes a TWO way maping between 
     VehicleViewMOdel <-> Vehicle
     
+
+22nd March 2019.
+   Trying to map view model to model (VehicleViewModel to Vehicle) but 2 of the properties are of different types
+   seeing strange error message (see https://stackoverflow.com/questions/55261646/auto-mapper-error-no-parameterless-constructor-defined-for-this-object?noredirect=1#comment97279742_55261646)
+   for detail on this. one comment said DI broken / not set up correctly.
+
+   Exploring this. Read http://docs.automapper.org/en/latest/Dependency-injection.html
+
+   Added the recommended Nuget package to CarPrice Comparison.csproj..
+   <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0">
