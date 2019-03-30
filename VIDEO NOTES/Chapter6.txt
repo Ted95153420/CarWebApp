@@ -79,3 +79,40 @@ of returning a bad request if an exception is thrown (for example, with IActionR
 
    Added the recommended Nuget package to CarPrice Comparison.csproj..
    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0">
+
+30th March 
+    Rather than configure mappings in startup.cs I used put all the set up in MappingProfile.cs then just 
+    told automapper what assembly to look in for mappings (see below). Done.
+
+    Mapper.Initialize(cfg =>
+                cfg.AddProfiles(new [] {"CarPriceComparison"})
+            );
+
+    The next big thing was to inject an instance of IMapper into the VehicleController 
+
+     public class VehicleController : Controller    {
+        private IMapper _mapper;
+        private IVehicleRepository _vehicleRepository;
+        public VehicleController(IVehicleRepository vehicleRepository_, IMapper mapper_)
+        {
+            _mapper = mapper_;
+            _vehicleRepository = vehicleRepository_;  
+        }
+
+    NOw you have done this, use the _mapper INSTANCE rather than the static Mapper class to do the mapping. 
+    This seemed to overcoe the issue I was having (https://stackoverflow.com/questions/55261646/auto-mapper-error-no-parameterless-constructor-defined-for-this-object)
+
+    [HttpPost("")]
+        public IActionResult PostNewVehicleData([FromBody]VehicleViewModel vehicleData_)
+        {
+            if (ModelState.IsValid)
+            {
+                //ultimately we want our new vehicle data saving to the database....
+                var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
+
+    NOTE - TO MAKE the DI happen (to get the ability to inject IMapper into the VehicleController in the first place)
+    you need to add automapper to the IServiceCollection in Startup.ConfigureServices :-
+
+    services.AddAutoMapper(typeof(Startup));
+
+    the AddAutoMapper is possible cos of the nuget package installed on 22nd.
