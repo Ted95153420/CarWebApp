@@ -8,9 +8,11 @@ namespace CarPriceComparison.Controllers.Api{
 
     [Route("api/vehicles")]
     public class VehicleController : Controller    {
+        private IMapper _mapper;
         private IVehicleRepository _vehicleRepository;
-        public VehicleController(IVehicleRepository vehicleRepository_)
+        public VehicleController(IVehicleRepository vehicleRepository_, IMapper mapper_)
         {
+            _mapper = mapper_;
             _vehicleRepository = vehicleRepository_;  
         }
         [HttpGet("")]
@@ -32,7 +34,7 @@ namespace CarPriceComparison.Controllers.Api{
             if (ModelState.IsValid)
             {
                 //ultimately we want our new vehicle data saving to the database....
-                var newVehicle = Mapper.Map<Vehicle>(vehicleData_);
+                var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
                 //mapper mapping from model to ViewMOdel so no actual model data send back.
                 return Created($"api/Vehicles/{vehicleData_.Notes}", Mapper.Map<VehicleViewModel>(vehicleData_)); 
             } 

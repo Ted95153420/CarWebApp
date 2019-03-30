@@ -52,6 +52,8 @@ namespace CarPriceComparison
             services.AddScoped<IVehicleRepository, VehicleRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +61,7 @@ namespace CarPriceComparison
         {
             //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
+            
             Mapper.Initialize(config =>
             {
                 config.CreateMap<VehicleViewModel, Vehicle>()
