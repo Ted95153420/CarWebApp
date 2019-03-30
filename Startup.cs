@@ -62,12 +62,10 @@ namespace CarPriceComparison
             //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
             
-            Mapper.Initialize(config =>
-            {
-                config.CreateMap<VehicleViewModel, Vehicle>()
-                .ForMember(dest => dest.DealerForeignKey, opt => opt.MapFrom<DealerResolver>())
-                .ForMember(dest => dest.ModelForeignKey, opt => opt.MapFrom<VehicleModelResolver>()).ReverseMap();
-            });
+            Mapper.Initialize(cfg =>
+                cfg.AddProfiles(new [] {"CarPriceComparison"})
+            );
+            
             app.UseMvc( config =>{
                 config.MapRoute(
                     name    : "Default",
