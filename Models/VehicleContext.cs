@@ -11,7 +11,7 @@ namespace CarPriceComparison.Models
             _config = config_;    
         }
 
-        public DbSet<Dealer> Dealers {get; set;}
+        public DbSet<Dealer> Dealer {get; set;}
 
         public DbSet<VehicleMakes> VehicleMakes {get; set;}
 
