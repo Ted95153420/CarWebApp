@@ -9,6 +9,7 @@ using CarPriceComparison.Models;
 using AutoMapper;
 using CarPriceComparison.ViewModels;
 using CarPriceComparison.Resolvers;
+using Microsoft.Extensions.Logging;
 
 namespace CarPriceComparison
 {
@@ -57,7 +58,7 @@ namespace CarPriceComparison
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logFactory)
         {
             //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
@@ -65,6 +66,9 @@ namespace CarPriceComparison
             Mapper.Initialize(cfg =>
                 cfg.AddProfiles(new [] {"CarPriceComparison"})
             );
+
+            logFactory.AddDebug(LogLevel.Error);
+            
             
             app.UseMvc( config =>{
                 config.MapRoute(

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarPriceComparison.Models
 {
@@ -10,9 +11,20 @@ namespace CarPriceComparison.Models
         {
             _vehicleContext = dbContext_;
         }
+
+        public void AddVehicle(Vehicle vehicle_)
+        {
+            _vehicleContext.Add(vehicle_);
+        }
+
         public IEnumerable<VehicleMakes> GetAllMakes()
         {
             return _vehicleContext.VehicleMakes.ToList();
+        }
+
+        public IEnumerable<Vehicle> GetAllVehicles()
+        {
+            return _vehicleContext.Vehicles.ToList();
         }
 
         public IEnumerable<Dealer> GetDealerById(int dealerId_)
@@ -26,6 +38,18 @@ namespace CarPriceComparison.Models
 
             return from v in _vehicleContext.VehicleModels.ToList()
                                 .Where(x=>x.VehicleMakeForeignKey==vehicleMakeId_) select v;
+        }
+
+        public Vehicle GetVehicleById(int vehicleId_)
+        {
+            IEnumerable<Vehicle> vehicles = from v in _vehicleContext.Vehicles.ToList()
+                                .Where(x=>x.Id == vehicleId_) select v;
+            return vehicles.FirstOrDefault();
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _vehicleContext.SaveChangesAsync()) > 0;
         }
     }
 }

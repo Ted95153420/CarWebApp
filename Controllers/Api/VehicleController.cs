@@ -3,6 +3,9 @@ using CarPriceComparison.Models;
 using CarPriceComparison.ViewModels;
 using AutoMapper;
 using System;
+using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace CarPriceComparison.Controllers.Api{
 
@@ -10,36 +13,44 @@ namespace CarPriceComparison.Controllers.Api{
     public class VehicleController : Controller    {
         private IMapper _mapper;
         private IVehicleRepository _vehicleRepository;
-        public VehicleController(IVehicleRepository vehicleRepository_, IMapper mapper_)
+        private ILogger<VehicleController> _logger;
+
+        public VehicleController(IVehicleRepository vehicleRepository_, IMapper mapper_, ILogger<VehicleController> logger_)
         {
             _mapper = mapper_;
-            _vehicleRepository = vehicleRepository_;  
+            _vehicleRepository = vehicleRepository_; 
+            _logger = logger_; 
         }
         [HttpGet("")]
-        public IActionResult GetVehicleMakes()
+        public IActionResult GetAllVehicles()
         {
             try{
-                return Ok(_vehicleRepository.GetAllMakes());
+
+                var allVehicles = _vehicleRepository.GetAllVehicles();
+
+                return Ok(_mapper.Map<IEnumerable<VehicleViewModel>>(allVehicles));
             }
             catch(Exception ex)
             {
-                //TODO - add logging
+                _logger.LogError($"Failed to rettrieve all vehicles : {ex}");
                 return BadRequest("An Error Ocurred");
             }
         }
 
         [HttpPost("")]
-        public IActionResult PostNewVehicleData([FromBody]VehicleViewModel vehicleData_)
+        public async Task<IActionResult> PostNewVehicleData([FromBody]VehicleViewModel vehicleData_)
         {
             if (ModelState.IsValid)
             {
-                //ultimately we want our new vehicle data saving to the database....
+                
                 var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
-                //mapper mapping from model to ViewMOdel so no actual model data send back.
-                return Created($"api/Vehicles/{vehicleData_.Notes}", Mapper.Map<VehicleViewModel>(vehicleData_)); 
+                if (await _vehicleRepository.SaveChangesAsync())
+                {
+                    return Created($"api/Vehicles/{vehicleData_.Notes}", _mapper.Map<VehicleViewModel>(newVehicle)); 
+                }
             } 
 
-            return BadRequest("Bad Data");
+            return BadRequest("Failed to save the vehicle");
         }
     }
 }

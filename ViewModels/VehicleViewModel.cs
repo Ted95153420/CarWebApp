@@ -19,6 +19,7 @@ namespace CarPriceComparison.ViewModels
         public int ModelForeignKey {get;set;}
         [Required]
         public int DealerForeignKey{get;set;}
+        public List<PictureViewModel> Pictures {get; set;}
         public string Notes{get; set;}
         public string Color{get; set;}
     }

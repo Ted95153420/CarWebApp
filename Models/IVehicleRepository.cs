@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CarPriceComparison.Models
 {
@@ -9,5 +10,12 @@ namespace CarPriceComparison.Models
         IEnumerable<VehicleModels> GetModelById(int id_);
 
         IEnumerable<Dealer> GetDealerById(int id_);
+        IEnumerable<Vehicle> GetAllVehicles();
+
+        Vehicle GetVehicleById(int id_);
+
+        void AddVehicle(Vehicle vehicle_);
+
+        Task <bool> SaveChangesAsync();
     }
 }
