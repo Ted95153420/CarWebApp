@@ -40,10 +40,13 @@ namespace CarPriceComparison.Controllers.Api{
         [HttpPost("")]
         public async Task<IActionResult> PostNewVehicleData([FromBody]VehicleViewModel vehicleData_)
         {
+            try
+            {
             if (ModelState.IsValid)
             {
                 
                 var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
+                _vehicleRepository.AddVehicle(newVehicle);
                 if (await _vehicleRepository.SaveChangesAsync())
                 {
                     return Created($"api/Vehicles/{vehicleData_.Notes}", _mapper.Map<VehicleViewModel>(newVehicle)); 
@@ -51,6 +54,11 @@ namespace CarPriceComparison.Controllers.Api{
             } 
 
             return BadRequest("Failed to save the vehicle");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest($"Exception Thrown :  {ex}");
+            }
         }
     }
 }
