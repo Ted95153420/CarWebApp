@@ -15,7 +15,7 @@ namespace CarPriceComparison.Models
         public string PostalCode{get;set;}
         public string WebAddress{get;set;}
         public string PhoneNumber{get;set;}
-        public List<Vehicle> Vehicles{get;set;}
+        public List<Vehicle> Vehicle{get;set;}
         public int CityForeignKey{get; set;}
 
     }
