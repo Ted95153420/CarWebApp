@@ -10,6 +10,8 @@ namespace CarPriceComparison.ViewModels
         {
             
         }
+
+        public int Id {get; set;}
         //Fuel Economy is in L/Km
         public float CityFuelEconomy {get;set;}
         public float HighwayFuelEconomy {get;set;}
