@@ -43,7 +43,7 @@ namespace CarPriceComparison.Controllers.Api{
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{vehicleId_:int}")]
         public IActionResult GetVehicle(int vehicleId_)
         {
             try{
@@ -69,11 +69,17 @@ namespace CarPriceComparison.Controllers.Api{
                 {
                     var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
                     _vehicleRepository.AddVehicle(newVehicle);
+                    var location = _linkGenerator.GetPathByAction("GetVehicle", "vehicles",
+                                                                        new {vehicleId_ = newVehicle.Id});
+
+                    if (string.IsNullOrWhiteSpace(location))
+                    {
+                        return BadRequest("could not use vehicleId_ to create a new vehicle in the dataase");
+                    }
                     if (await _vehicleRepository.SaveChangesAsync())
                     {
                         var vehicleModel = _mapper.Map<VehicleViewModel>(newVehicle);
-                        var location = _linkGenerator.GetPathByAction("GetVehicle", "vehicles",
-                                                                        new {id = newVehicle.Id});
+                        
                         return Created(location, _mapper.Map<VehicleViewModel>(newVehicle)); 
                     }
                 } 
