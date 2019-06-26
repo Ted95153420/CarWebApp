@@ -72,15 +72,21 @@ namespace CarPriceComparison.Controllers.Api{
                     var location = _linkGenerator.GetPathByAction("GetVehicle", "vehicles",
                                                                         new {vehicleId_ = newVehicle.Id});
 
-                    if (string.IsNullOrWhiteSpace(location))
-                    {
-                        return BadRequest("could not use vehicleId_ to create a new vehicle in the dataase");
-                    }
+
+                    //TODO - uncomment once I found out WHY the location is always returned as null
+                    //check https://tinyurl.com/yyscntdf for ideas
+                    //if (string.IsNullOrWhiteSpace(location))
+                    //{
+                    //    return BadRequest("could not use vehicleId_ to create a new vehicle in the dataase");
+                    //}
                     if (await _vehicleRepository.SaveChangesAsync())
                     {
                         var vehicleModel = _mapper.Map<VehicleViewModel>(newVehicle);
                         
-                        return Created(location, _mapper.Map<VehicleViewModel>(newVehicle)); 
+                        //TODO use commented cersion once there is an answer to 
+                        //https://tinyurl.com/yyscntdf
+                        //return Created(location, _mapper.Map<VehicleViewModel>(newVehicle));
+                        return Created($"api/vehicles{newVehicle.Id}", _mapper.Map<VehicleViewModel>(newVehicle)); 
                     }
                 } 
                 return BadRequest("Failed to save the vehicle");
