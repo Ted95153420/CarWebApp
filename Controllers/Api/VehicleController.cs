@@ -51,6 +51,11 @@ namespace CarPriceComparison.Controllers.Api{
                 var specificVehicle = _vehicleRepository.GetVehicleById(vehicleId_);
 
                 if (specificVehicle == null) return NotFound();
+                var vehicleViewModel = _mapper.Map<VehicleViewModel>(specificVehicle);
+                //TODO - why are DealerForeignKey and MOdelForeignKey returned as null
+                //but have a value in the database??
+                //vehicleViewModel.DealerForeignKey = specificVehicle.DealerForeignKey.Id;
+                //vehicleViewModel.ModelForeignKey = specificVehicle.ModelForeignKey.Id;
                 return Ok(_mapper.Map<VehicleViewModel>(specificVehicle));
             }
             catch(Exception ex)
@@ -83,6 +88,8 @@ namespace CarPriceComparison.Controllers.Api{
                         location = _linkGenerator.GetPathByAction("GetVehicle", "Vehicle",
                                                                         new {vehicleId_ = newVehicle.Id});
                         var vehicleViewModel = _mapper.Map<VehicleViewModel>(newVehicle);
+                        vehicleViewModel.ModelForeignKey = newVehicle.ModelForeignKey.Id;
+                        vehicleViewModel.DealerForeignKey = newVehicle.DealerForeignKey.Id;
                         return Created(location, vehicleViewModel); 
                     }
                 } 
