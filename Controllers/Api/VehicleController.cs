@@ -69,24 +69,21 @@ namespace CarPriceComparison.Controllers.Api{
                 {
                     var newVehicle = _mapper.Map<Vehicle>(vehicleData_);
                     _vehicleRepository.AddVehicle(newVehicle);
-                    var location = _linkGenerator.GetPathByAction("GetVehicle", "vehicles",
+                    var location = _linkGenerator.GetPathByAction("GetVehicle", "Vehicle",
                                                                         new {vehicleId_ = newVehicle.Id});
-
-
-                    //TODO - uncomment once I found out WHY the location is always returned as null
-                    //check https://tinyurl.com/yyscntdf for ideas
-                    //if (string.IsNullOrWhiteSpace(location))
-                    //{
-                    //    return BadRequest("could not use vehicleId_ to create a new vehicle in the dataase");
-                    //}
+                    
+                    if (string.IsNullOrWhiteSpace(location))
+                    {
+                        return BadRequest("could not use vehicleId_ to create a new vehicle in the database");
+                    }
                     if (await _vehicleRepository.SaveChangesAsync())
                     {
-                        var vehicleModel = _mapper.Map<VehicleViewModel>(newVehicle);
-                        
-                        //TODO use commented cersion once there is an answer to 
-                        //https://tinyurl.com/yyscntdf
-                        //return Created(location, _mapper.Map<VehicleViewModel>(newVehicle));
-                        return Created($"api/vehicles{newVehicle.Id}", _mapper.Map<VehicleViewModel>(newVehicle)); 
+                        //TODO - hate the way GetPathByAction is called twice. Second call gets a valid Id
+                        //AFTER the record is added to the database. Anyway round this??
+                        location = _linkGenerator.GetPathByAction("GetVehicle", "Vehicle",
+                                                                        new {vehicleId_ = newVehicle.Id});
+                        var vehicleViewModel = _mapper.Map<VehicleViewModel>(newVehicle);
+                        return Created(location, vehicleViewModel); 
                     }
                 } 
                 return BadRequest("Failed to save the vehicle");
