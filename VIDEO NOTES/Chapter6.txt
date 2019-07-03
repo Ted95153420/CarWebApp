@@ -122,6 +122,13 @@ of returning a bad request if an exception is thrown (for example, with IActionR
    TOFIX : added VehicleController.GetVehicle - id parameter is always mapped as a zero,
    no matter what was passed in
 
-   TOFIX : cascading dropdowns (make -> Model) not working
+   TOFIX : _linkGenerator in VehicleController.PostNewVehicleData always returns null - Fixed via Stack 
+   overflow
 
-   TOFIX : _linkGenerator in VehicleController.PostNewVehicleData always returns null
+3rd July
+TO UNDERSTAND
+    Added shell of a PicturesController. Note new signature for get. 
+    Task<ActionResult<Picture[]>> this is a  different pattern to the signatures in
+    VehicleController - e.g public IActionResult GetVehicle(int vehicleId_)
+    what is the difference? What is the advantage of going the 
+    Task<ActionResult<Picture[]>> way??

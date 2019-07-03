@@ -19,6 +19,8 @@ namespace CarPriceComparison.Models
 
         public DbSet<Vehicle> Vehicles {get; set;}
 
+        public DbSet<Picture> VehiclePictures {get; set;}
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

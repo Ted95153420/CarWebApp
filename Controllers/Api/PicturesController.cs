@@ -26,15 +26,15 @@ namespace CarPriceComparison.Controllers.Api{
         }
 
         [HttpGet]
-        public async Task<ActionResult<Picture[]>> Get(int vehicleId_)
+        public Task<ActionResult<Picture[]>> Get(int vehicleId_)
         {
            try{
-               var pictures = await _vehicleRepository.GetVehiclePicturesAsync();
-               return pictures;
+               var pictures =  _vehicleRepository.GetVehiclePicturesAsync(vehicleId_);
+               return Mapper.Map<Picture[]>(pictures);
            } 
            catch(Exception)
            {
-               return StatusCode(StatusCodes.Status500InternalServerError("Failed to get vehicle pictures"))
+               return StatusCode(StatusCodes.Status500InternalServerError, "Failed to get vehicle pictures");
            }
         }
     }
