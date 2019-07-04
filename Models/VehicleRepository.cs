@@ -22,11 +22,10 @@ namespace CarPriceComparison.Models
             return _vehicleContext.VehicleMakes.ToList();
         }
 
-        public IEnumerable<Picture> GetVehiclePicturesAsync(int vehicleId_)
+        public IEnumerable<Picture> GetVehiclePictures(int vehicleId_)
         {
-            //return from v in _vehicleContext.VehiclePictures.ToList()
-            //            .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
-            return _vehicleContext.VehiclePictures.ToList();
+            return from v in _vehicleContext.VehiclePictures.ToList()
+                        .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
         }
 
         public IEnumerable<Vehicle> GetAllVehicles()

@@ -31,7 +31,7 @@ namespace CarPriceComparison.Controllers.Api{
         public IActionResult GetPictures(int vehicleId_)
         {
            try{
-               var pictures =  _vehicleRepository.GetVehiclePicturesAsync(vehicleId_);
+               var pictures =  _vehicleRepository.GetVehiclePictures(vehicleId_);
                return Ok(_mapper.Map<IEnumerable<PictureViewModel>>(pictures));
            } 
            catch(Exception ex)

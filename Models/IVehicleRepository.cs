@@ -18,6 +18,6 @@ namespace CarPriceComparison.Models
 
         Task <bool> SaveChangesAsync();
 
-        IEnumerable<Picture> GetVehiclePicturesAsync(int vehicleId_);
+        IEnumerable<Picture> GetVehiclePictures(int vehicleId_);
     }
 }
