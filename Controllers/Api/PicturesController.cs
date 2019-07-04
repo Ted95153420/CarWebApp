@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CarPriceComparison.Controllers.Api{
     [ApiController]
-    [Route("api/vehicles{{vehicleId_}/pictures")]
+    [Route("api/vehicles/{vehicleId_}/pictures")]
     public class PicturesController : Controller {
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IMapper _mapper;
@@ -36,8 +36,8 @@ namespace CarPriceComparison.Controllers.Api{
            } 
            catch(Exception ex)
            {
-              _logger.LogError($"Failed to retrieve specific vehicle : {ex}");
-              return BadRequest("An Error Ocurred retrieving a specific vehicle. Check Logs.");
+              _logger.LogError($"Failed to retrieve pictures for vehicle : {ex}");
+              return BadRequest("An Error Ocurred retrieving pictures for vehicle. Check Logs.");
            }
         }
     }

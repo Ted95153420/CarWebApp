@@ -24,8 +24,9 @@ namespace CarPriceComparison.Models
 
         public IEnumerable<Picture> GetVehiclePicturesAsync(int vehicleId_)
         {
-            return from v in _vehicleContext.VehiclePictures.ToList()
-                        .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
+            //return from v in _vehicleContext.VehiclePictures.ToList()
+            //            .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
+            return _vehicleContext.VehiclePictures.ToList();
         }
 
         public IEnumerable<Vehicle> GetAllVehicles()
