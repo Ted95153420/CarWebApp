@@ -55,20 +55,23 @@ namespace CarPriceComparison
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddLogging(loggingBuilder => 
+            {
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
             
             Mapper.Initialize(cfg =>
                 cfg.AddProfiles(new [] {"CarPriceComparison"})
-            );
-
-            logFactory.AddDebug(LogLevel.Error);
-            
+            ); 
             
             app.UseMvc( config =>{
                 config.MapRoute(

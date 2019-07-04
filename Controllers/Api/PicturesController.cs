@@ -15,26 +15,29 @@ namespace CarPriceComparison.Controllers.Api{
     public class PicturesController : Controller {
         private readonly IVehicleRepository _vehicleRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger<PicturesController> _logger;
         private readonly LinkGenerator _linkGenerator;
 
         public PicturesController(IVehicleRepository vehicleRepository_, 
-                                IMapper mapper_, LinkGenerator linkgenerator_)
+                                IMapper mapper_, ILogger<PicturesController> logger_, LinkGenerator linkgenerator_)
         {
             _vehicleRepository = vehicleRepository_;
             _mapper = mapper_;
+            _logger = logger_;
             _linkGenerator = linkgenerator_;
         }
 
         [HttpGet]
-        public Task<ActionResult<Picture[]>> Get(int vehicleId_)
+        public IActionResult GetPictures(int vehicleId_)
         {
            try{
                var pictures =  _vehicleRepository.GetVehiclePicturesAsync(vehicleId_);
-               return Mapper.Map<Picture[]>(pictures);
+               return Ok(_mapper.Map<IEnumerable<PictureViewModel>>(pictures));
            } 
-           catch(Exception)
+           catch(Exception ex)
            {
-               return StatusCode(StatusCodes.Status500InternalServerError, "Failed to get vehicle pictures");
+              _logger.LogError($"Failed to retrieve specific vehicle : {ex}");
+              return BadRequest("An Error Ocurred retrieving a specific vehicle. Check Logs.");
            }
         }
     }
