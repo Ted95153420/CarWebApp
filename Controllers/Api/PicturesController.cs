@@ -40,5 +40,19 @@ namespace CarPriceComparison.Controllers.Api{
               return BadRequest("An Error Ocurred retrieving pictures for vehicle. Check Logs.");
            }
         }
+
+        [HttpGet("{pictureId_:int}")]
+        public IActionResult GetIndividualPicture(int vehicleId_, int pictureId_)
+        {
+            try{
+                var picture =  _vehicleRepository.GetIndividualPicture(vehicleId_, pictureId_);
+                return Ok(_mapper.Map<PictureViewModel>(picture));
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Failed to retrieve specific picture : {ex}");
+                return BadRequest("An Error Ocurred retrieving an individual picture. Check Logs.");    
+            }
+        }
     }
 }

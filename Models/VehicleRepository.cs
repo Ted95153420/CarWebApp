@@ -28,6 +28,14 @@ namespace CarPriceComparison.Models
                         .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
         }
 
+        public Picture GetIndividualPicture(int vehicleId_, int pictureId_)
+        {
+            IEnumerable<Picture> pictures =  from v in _vehicleContext.VehiclePictures.ToList()
+                        .Where(x => x.VehicleForeignKey.Id == vehicleId_
+                                && x.Id == pictureId_) select v;    
+            return pictures.FirstOrDefault();
+        }
+
         public IEnumerable<Vehicle> GetAllVehicles()
         {
             return _vehicleContext.Vehicles.ToList();
