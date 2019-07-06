@@ -54,5 +54,36 @@ namespace CarPriceComparison.Controllers.Api{
                 return BadRequest("An Error Ocurred retrieving an individual picture. Check Logs.");    
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostNewPicture(int vehicleId_, PictureViewModel picture_)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    var vehicle = _vehicleRepository.GetVehicleById(vehicleId_);
+                    if (vehicle == null) return BadRequest("Vehicle Not Found");
+
+                    var newPicture = _mapper.Map<Picture>(picture_);
+                    newPicture.VehicleForeignKey = vehicle;
+                    _vehicleRepository.AddPicture(newPicture);
+                    if (await _vehicleRepository.SaveChangesAsync())
+                    {
+                        var url = _linkGenerator.GetPathByAction("GetIndividualPicture", 
+                                                                "Pictures",
+                                                                new {vehicleId_ = newPicture.VehicleForeignKey.Id,
+                                                                     pictureId_ = newPicture.Id});
+                        var pictureViewModel = _mapper.Map<PictureViewModel>(newPicture);
+                        return Created(url, _mapper.Map<PictureViewModel>(newPicture)); 
+                    }
+                }
+                return BadRequest("Failed to save the picture");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest($"Exception Thrown :  {ex}");
+            }
+        }
     }
 }

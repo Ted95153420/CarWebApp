@@ -17,6 +17,11 @@ namespace CarPriceComparison.Models
             _vehicleContext.Add(vehicle_);
         }
 
+        public void AddPicture(Picture picture_)
+        {
+            _vehicleContext.Add(picture_);
+        }
+
         public IEnumerable<VehicleMakes> GetAllMakes()
         {
             return _vehicleContext.VehicleMakes.ToList();
