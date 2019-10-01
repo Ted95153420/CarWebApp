@@ -66,7 +66,7 @@ namespace CarPriceComparison
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
+            //very useful reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
             
             Mapper.Initialize(cfg =>

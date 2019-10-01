@@ -1,9 +1,23 @@
 # CarWebApp
-Sort of like gas buddy, but for car listed vs sold prices.
-Goal is for a searchable database of SOLD cars - you can see what dealer listed them, how much for and how much 
-the vehicle sold for amongst various other data a car shopper will find useful in the buying process.
+API that will allow you to
+Add a new car to the database
+Add Multiple pictures of one car to the database
+
 
 ## Prerequisites / getting set up
 
-Just download the stuff you need (vscode / .Net Core). I have explained how to do this [right here](https://www.youtube.com/watch?v=k873eektwkw "Ted Talks")
+ONE
+
+If you do not have vscode and / or .Net Core already installe, then  I have explained how to do this [right here](https://www.youtube.com/watch?v=k873eektwkw "Ted Talks")
+You do not absolubtley HAVE to use vscode. Hosever, it was my IDE of choice for this project.
+
+TWO
+
+Download the libraries you need to make this project work. You will use Bower to help you do this.
+If you do not have the packages already installed, then you will not be able to compile this project. You will see something like the following..
+
+
+
+
+
 
