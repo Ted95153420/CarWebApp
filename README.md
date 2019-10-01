@@ -19,7 +19,7 @@ Download the libraries you need to make this project work. You will use Bower to
 If you do not have the packages already installed, then you will notice two things.
     1. The libraries you need are NOT in the 'wwwroot/lib' folder. Notice how in the screenshot below you can see libraries such as boorstrap, bootswatch, font-awesome etc, etc. If you have not installed and run Bower, you will NOT be able to see these.
 
-    ![Ted](WithBower.JPG) 
+    ![Ted](withbower.jpg) 
 
 
 
