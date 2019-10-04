@@ -6,20 +6,24 @@ Add Multiple pictures of one car to the database
 
 ## Prerequisites / getting set up
 
-ONE
+**ONE**
 
 If you do not have vscode and / or .Net Core already installe, then  I have explained how to do this [right here](https://www.youtube.com/watch?v=k873eektwkw "Ted Talks")
 You do not absolubtley HAVE to use vscode. Hosever, it was my IDE of choice for this project.
 
 You will need to install Bower so that you can download the libraries needd for this project. (See step TWO). Go to https://bower.io to learn about Bower and download it.
 
-TWO
+**TWO**
 
-Download the libraries you need to make this project work. You will use Bower to help you do this.
-If you do not have the packages already installed, then you will notice two things.
-    1. The libraries you need are NOT in the 'wwwroot/lib' folder. Notice how in the screenshot below you can see libraries such as boorstrap, bootswatch, font-awesome etc, etc. If you have not installed and run Bower, you will NOT be able to see these.
+Download the libraries you need to make this project work. You will use Bower to help you do this. Using a command prompt, change directory to the same directory that contains the project file 'CarPriceComparison.csproj'. NOw run the command /bower install'.
 
-![Ted](withbower.jpg) 
+After running the bower install command, you will notice you have the packages you need.
+If you do not have the packages already installed
+
+![After runing Bower](withbower.jpg) 
+    2. The project will not build.
+
+To rectify the above, run the following command after you have installed Bower.
 
 
 
