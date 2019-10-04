@@ -1,29 +1,36 @@
 # CarWebApp
 API that will allow you to
-Add a new car to the database
-Add Multiple pictures of one car to the database
+- Add a new cars to the database
+- Add Multiple pictures of each car to the database
 
 
 ## Prerequisites / getting set up
 
 **ONE**
 
-If you do not have vscode and / or .Net Core already installe, then  I have explained how to do this [right here](https://www.youtube.com/watch?v=k873eektwkw "Ted Talks")
-You do not absolubtley HAVE to use vscode. Hosever, it was my IDE of choice for this project.
+If you do not have vscode and / or .Net Core already installed, then  I have explained how to do this [right here](https://www.youtube.com/watch?v=k873eektwkw "Ted Talks")
 
 You will need to install Bower so that you can download the libraries needd for this project. (See step TWO). Go to https://bower.io to learn about Bower and download it.
 
 **TWO**
 
-Download the libraries you need to make this project work. You will use Bower to help you do this. Using a command prompt, change directory to the same directory that contains the project file 'CarPriceComparison.csproj'. NOw run the command /bower install'.
+Download the libraries you need to make this project work. You will use Bower to help you do this. Using a command prompt, change directory to the same directory that contains the project file 'CarPriceComparison.csproj'. Now run the command 'bower install'.
 
 After running the bower install command, you will notice you have the packages you need.
-If you do not have the packages already installed
 
 ![After runing Bower](withbower.jpg) 
-    2. The project will not build.
+   
+running 'bower install' will download and install te required packages. This is because descriptions of these packages are held in the bower.json file, so bower 'knows' to find them online and download them.
 
-To rectify the above, run the following command after you have installed Bower.
+The next thing to do is to build and run the project. The following assumes you are in a command prompt of your choice (I personally use git bash) and ensure you have changed directory to the directory containing the 'CarPriceComparison.csproj' file. run the following command.
+
+dotnet build CarPriceComparison.csproj
+
+After a short while you should see a message saying the build was successful.
+
+![Succesfully built](buildsuccess.jpg)
+
+
 
 
 
