@@ -30,6 +30,39 @@ After a short while you should see a message saying the build was successful.
 
 ![Succesfully built](buildsuccess.jpg)
 
+Go ahead and run the project. 
+
+![Project up and running](runsuccess.JPG)
+
+## Using the API - endpoints.
+
+**Adding a brand new vehicle**
+
+POST a brand new car to the database (as of October 2019, not - authenticated)
+
+Expected return code : 201 Created
+
+http://localhost:5000/api/vehicles
+
+Body
+```
+{
+	"CityFuelEconomy" : 10.1,
+	"HighwayFuelEconomy" : 9.8,
+	"ListPrice" : 12000.00,
+	"SoldPrice" : 11500.00,
+	"ModelForeignKey" : 1,
+	"DealerForeignKey" : 1,
+	"Notes" : "Saturday 5 October", 
+	"Color" : "White"
+}
+```
+NOtice how the above Json contains foreign Keys for the Car Model and the Dealer. Any new car has these. Multiple cars can belong to the same dealership.
+
+NOTE TO SELF - the Id for the above is 1012
+
+
+
 
 
 
