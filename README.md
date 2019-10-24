@@ -59,7 +59,26 @@ Body
 ```
 NOtice how the above Json contains foreign Keys for the Car Model and the Dealer. Any new car has these. Multiple cars can belong to the same dealership.
 
-NOTE TO SELF - the Id for the above is 1012
+**Adding picture(s) for a given vehicle**
+
+POST - Pictures uploaded as a byte stream (As of October 2019, not authenticated)
+
+http://localhost:5000/api/vehicles/{vehicleId_}/Pictures
+
+Example (where 1012 is the required Vehicle Id)
+
+http://localhost:5000/api/vehicles/1012/Pictures
+
+NOT Quite right - some encoding / ecoding required the example below appears in Db as
+0xDB7E36DF8DB7E36DF8
+
+Body
+```
+{
+	"Image" : '234234234234',
+	"VehicleForeignKey" : 1012
+}
+```
 
 
 
