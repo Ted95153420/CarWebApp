@@ -6,7 +6,7 @@ namespace CarPriceComparison.Models
     public class Picture
     {
         public int Id {get; set;}
-        public byte[] Image {get; set;}
+        public string Image {get; set;}
         [ForeignKey("VehicleId")]
         public virtual Vehicle VehicleForeignKey{get;set;}
     }
