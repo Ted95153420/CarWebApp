@@ -10,7 +10,7 @@ namespace CarPriceComparison.Mappings
         public MappingProfile()
         {
             CreateMap<PictureViewModel, Picture>()
-                .ForMember(dest => dest.VehicleForeignKey, opt => opt.MapFrom<PictureResolver>()).ReverseMap();
+                .ForMember(dest => dest.Vehicle, opt => opt.MapFrom<PictureResolver>()).ReverseMap();
 
             CreateMap<VehicleViewModel, Vehicle>()
                 .ForMember(dest => dest.DealerForeignKey, opt => opt.MapFrom<DealerResolver>())

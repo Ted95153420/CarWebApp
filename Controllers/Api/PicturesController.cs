@@ -66,13 +66,13 @@ namespace CarPriceComparison.Controllers.Api{
                     if (vehicle == null) return BadRequest("Vehicle Not Found");
 
                     var newPicture = _mapper.Map<Picture>(picture_);
-                    newPicture.VehicleForeignKey = vehicle;
+                    newPicture.Vehicle = vehicle;
                     _vehicleRepository.AddPicture(newPicture);
                     if (await _vehicleRepository.SaveChangesAsync())
                     {
                         var url = _linkGenerator.GetPathByAction("GetIndividualPicture", 
                                                                 "Pictures",
-                                                                new {vehicleId_ = newPicture.VehicleForeignKey.Id,
+                                                                new {vehicleId_ = newPicture.Vehicle.Id,
                                                                      pictureId_ = newPicture.Id});
                         var pictureViewModel = _mapper.Map<PictureViewModel>(newPicture);
                         return Created(url, _mapper.Map<PictureViewModel>(newPicture)); 

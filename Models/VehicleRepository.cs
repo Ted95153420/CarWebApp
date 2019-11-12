@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarPriceComparison.Models
 {
@@ -29,14 +30,15 @@ namespace CarPriceComparison.Models
 
         public IEnumerable<Picture> GetVehiclePictures(int vehicleId_)
         {
-            return from v in _vehicleContext.VehiclePictures.ToList()
-                        .Where(x => x.VehicleForeignKey.Id == vehicleId_) select v;
+            return from v in _vehicleContext.Pictures.ToList()
+                        .Where(x => x.Vehicle.Id == vehicleId_) select v;
         }
 
         public Picture GetIndividualPicture(int vehicleId_, int pictureId_)
         {
-            IEnumerable<Picture> pictures =  from v in _vehicleContext.VehiclePictures.ToList()
-                        .Where(x => x.VehicleForeignKey.Id == vehicleId_
+            _vehicleContext.Pictures.Include(vp => vp.Vehicle);
+            IEnumerable<Picture> pictures =  from v in _vehicleContext.Pictures.ToList()
+                        .Where(x => x.Vehicle.Id == vehicleId_
                                 && x.Id == pictureId_) select v;    
             return pictures.FirstOrDefault();
         }

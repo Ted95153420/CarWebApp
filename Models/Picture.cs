@@ -8,6 +8,6 @@ namespace CarPriceComparison.Models
         public int Id {get; set;}
         public string Image {get; set;}
         [ForeignKey("VehicleId")]
-        public virtual Vehicle VehicleForeignKey{get;set;}
+        public virtual Vehicle Vehicle{get;set;}
     }
 }
