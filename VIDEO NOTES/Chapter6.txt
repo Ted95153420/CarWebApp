@@ -120,7 +120,7 @@ of returning a bad request if an exception is thrown (for example, with IActionR
 10th June
    Migrated to automapper 2.2
    TOFIX : added VehicleController.GetVehicle - id parameter is always mapped as a zero,
-   no matter what was passed in
+   no matter what was passed in - asked and resolved on Stack overflow
 
    TOFIX : _linkGenerator in VehicleController.PostNewVehicleData always returns null - Fixed via Stack 
    overflow
@@ -132,3 +132,21 @@ TO UNDERSTAND
     VehicleController - e.g public IActionResult GetVehicle(int vehicleId_)
     what is the difference? What is the advantage of going the 
     Task<ActionResult<Picture[]>> way??
+
+12th November 2019
+    Pictures Controller - I could not understand why the foreign Key withing the Pictures
+    table was always being returned as null. The answer was because I was not Including it.
+
+    See 'Include' in the query below. Dont include this and Vehicle is always null.
+    ALSO - I was using .ToList() immediately after the .Include(vp => vp.Vehicle)
+    dont do this - it loads the entire result set into memory BEFORE  any filtering is done
+
+    public Picture GetIndividualPicture(int vehicleId_, int pictureId_)
+        {
+            IEnumerable<Picture> pictures =  from v in _vehicleContext.Pictures
+                        .Include(vp => vp.Vehicle)
+                        .Where(x => x.Vehicle.Id == vehicleId_
+                                && x.Id == pictureId_) select v;    
+            return pictures.FirstOrDefault();
+        }
+
