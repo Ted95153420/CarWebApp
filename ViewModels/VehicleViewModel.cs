@@ -16,6 +16,7 @@ namespace CarPriceComparison.ViewModels
         public float CityFuelEconomy {get;set;}
         public float HighwayFuelEconomy {get;set;}
         public float ListPrice {get;set;}
+        public bool IsSold {get;set;}
         public float SoldPrice{get;set;}
         [Required]
         public int ModelForeignKey {get;set;}
