@@ -50,10 +50,11 @@ Body
 	"CityFuelEconomy" : 10.1,
 	"HighwayFuelEconomy" : 9.8,
 	"ListPrice" : 12000.00,
+	"IsSold" : "True",
 	"SoldPrice" : 11500.00,
 	"ModelForeignKey" : 1,
 	"DealerForeignKey" : 1,
-	"Notes" : "Saturday 5 October", 
+	"Notes" : "Wednesday 13th November 2019", 
 	"Color" : "White"
 }
 ```
@@ -61,24 +62,68 @@ NOtice how the above Json contains foreign Keys for the Car Model and the Dealer
 
 **Adding picture(s) for a given vehicle**
 
-POST - Pictures uploaded as a byte stream (As of October 2019, not authenticated)
+POST - Pictures uploaded as a base64 encoded string (As of October 2019, not authenticated)
 
 http://localhost:5000/api/vehicles/{vehicleId_}/Pictures
 
-Example (where 1012 is the required Vehicle Id)
+Example (where 1005 is the required Vehicle Id)
 
-http://localhost:5000/api/vehicles/1012/Pictures
+http://localhost:5000/api/vehicles/1005/Pictures
 
-NOT Quite right - some encoding / ecoding required the example below appears in Db as
-0xDB7E36DF8DB7E36DF8
+TODO NOT SURE WHY VEHICLE ID IS SUPPLIED IN THE URL AND IN THE JSON - LOOK INTO THIS
 
 Body
 ```
 {
 	"Image" : '234234234234',
-	"VehicleForeignKey" : 1012
+	"VehicleForeignKey" : 1005
 }
 ```
+Response
+TODO - notice how the vehicleForeignKey is returned as 0 - NEEDS FIXING
+{"image":"Your Base64 string for veh 1005 here","vehicleForeignKey":0}
+
+**Retrieving a picture for a given vehicle**
+
+GET - Picture retrieved as a base 64encoded string
+
+http://localhost:5000/api/vehicles/{vehicleId}/pictures/{pictureId}
+
+Example - where vehicleId = 1005 and pictureId = 13
+
+http://localhost:5000/api/vehicles/1005/pictures/13
+
+Example of Json returned :- (TODO vehicleForeignKey IS ALWAYS RETURNED AS 0, NOT THE REQUIRED VALUE FIX THIS)
+
+Status : 200 OK
+
+```
+{
+    "image": "Your Base64 string for veh 1005 here",
+    "vehicleForeignKey": 0
+}
+```
+
+An Exception will be thrown if invalid data is entered. Case 1. Invalid Integer vehicleId
+
+http://localhost:5000/api/vehicles/10054737292929292929/pictures/13
+
+Status : 400 Bad Request
+
+```
+{
+    "vehicleId_": [
+        "The value '10054737292929292929' is not valid."
+    ]
+}
+```
+
+Case 2. Invalid Integer pictureId. 
+http://localhost:5000/api/vehicles/1005/pictures/13293
+
+Status 204 : No Content  TODO - No meaningful Error message returned as in Case 1. Fix this
+
+
 
 
 
