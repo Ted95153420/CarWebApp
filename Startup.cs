@@ -65,6 +65,8 @@ namespace CarPriceComparison
 
             services.AddScoped<IVehicleRepository, VehicleRepository>();
 
+            services.AddControllers();
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(), Assembly.Load("CarPriceComparison"));
