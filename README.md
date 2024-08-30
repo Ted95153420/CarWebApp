@@ -19,7 +19,7 @@ Next right click the Solution and click 'Manage Nuget Packages for solution'
 Now check your Installed Nuget packages as shown in the screenshot below. 
 At the time of writing (30th August 2024) the packages installed were <br/>
 AutoMapper v13.0.1 <br/>
-Microsoft.EntityFrameworkCore.Design v8.0.8  <br/>  
+Microsoft.EntityFrameworkCore.Design v8.0.8 <br/>  
 Microsoft.EntityFrameworkCore.SQLServer v8.0.8 <br/>
 Microsoft.EntityFrameworkCore.Tools v8.0.8 <br/>
 
