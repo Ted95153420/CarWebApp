@@ -1,0 +1,50 @@
+30th August 2024
+
+Revisited this project for the first time since around 2019. 
+
+Of Huge significance are
+
+Project was using .net core 2.2 which was long since end of life'd  - upgraded to .NET 8. To do this I needed to install 
+the .Net Upgrade Assistant extension
+
+Automapper Nuget package I was using was deprecated. I needed to upgrade to AutoMapper 13.0.1
+
+Because of said upgrades, I saw numerous compilation errors. The most significant was the code in Startup.cs 
+I needed to Migrate to use endpointRouting in short, we DO NOT use this anymore (the UseMvc is NOT supported whilst using EndpointRouting 
+- to get around this I would have had to of disabled Endpointrouting using MvcOptions.EnableEndPOintRouting = false' - which would have been 
+ok, but its really not the way forward. )
+
+ app.UseMvc(config =>
+            {
+                config.MapRoute(
+                    name: "Default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" }
+                );
+            });
+			
+SO, I had 2 options. I went with option 2.
+
+
+Option 1: Disable Endpoint Routing
+
+Add the following line to the ConfigureServices method:
+
+services.AddMvc(options => options.EnableEndpointRouting = false);
+
+This will allow you to continue using UseMvc.
+
+Option 2: Migrate to Endpoint Routing
+
+Replace the UseMvc call with the Endpoint Routing equivalent:
+
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
+This will migrate your application to use Endpoint Routing.
+
+Choose one of the options and update the code accordingly. Let me know if you have any questions or need further assistance
+ 
