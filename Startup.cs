@@ -65,8 +65,6 @@ namespace CarPriceComparison
 
             services.AddScoped<IVehicleRepository, VehicleRepository>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly(), Assembly.Load("CarPriceComparison"));
@@ -91,14 +89,8 @@ namespace CarPriceComparison
 
             var mapper = mapperConfig.CreateMapper();
 
-            app.UseMvc(config =>
-            {
-                config.MapRoute(
-                    name: "Default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" }
-                );
-            });
+            app.UseRouting();
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
