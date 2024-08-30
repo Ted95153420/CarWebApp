@@ -10,18 +10,20 @@ Clone the git repository the URL is https://github.com/Ted95153420/CarWebApp.git
 
 Once cloned, set startup.cs as the startup item (right click -> Set as startup Item)
 
-![Set as Startup](/ReadMeMedia/README_SetAsStartUp.JPG) "Set as startup")
+![Set as Startup](/ReadMeMedia/README_SetAsStartUp.JPG "Set as startup")
 
-Next right click the Solution anc click 'Manage Nuget Packages for solution'
+Next right click the Solution and click 'Manage Nuget Packages for solution'
 
-![Manage Nuget Packages for solution](/ReadMeMedia/ManageNugetPackages.jpg) "Manage Nuget Packages")
+![Manage Nuget Packages for solution](/ReadMeMedia/ManageNugetPackages.jpg "Manage Nuget Packages")
 
-N0w check your INstalled packages as shown in the screenshot below. 
+Now check your Installed Nuget packages as shown in the screenshot below. 
 At the time of writing (30th August 2024) the packages installed were
 AutoMapper v13.0.1
-Microsoft.EntityFrameworkCore.Design v8.0.8
-Microsoft.EntityFrameworkCore.SQLServer v8.0.8
-Microsoft.EntityFrameworkCore.Tools v8.0.8
+Microsoft.EntityFrameworkCore.Design v8.0.8  <br/>  
+Microsoft.EntityFrameworkCore.SQLServer v8.0.8 <br/>
+Microsoft.EntityFrameworkCore.Tools v8.0.8 <br/>
 
-![MINstalled Nuget Packages](/ReadMeMedia/InstalledPackages.JPG) "Installed Packages")
+Make sure the packages you have installed are at least at the versions stated above.
+
+![INstalled Nuget Packages](/ReadMeMedia/InstalledPackages.JPG "Installed Packages")
 
