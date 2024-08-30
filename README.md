@@ -30,5 +30,5 @@ Make sure the packages you have installed are at least at the versions stated ab
 Now check that you have .NET SDK 8.0.1 (or above) installed. Open a command prompt and run the command <br/>
 dotnet sdk check <br/>
 as you can see, I have .NET SDK 8.0.1 installed.
-![dot NET SDK version installed](/ReadMeMedia/ManageNugetPackages.jpg "Sdk Version")
+![dot NET SDK version installed](/ReadMeMedia/sdkVersion.jpg "Sdk Version")
 
