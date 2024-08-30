@@ -12,3 +12,16 @@ Once cloned, set startup.cs as the startup item (right click -> Set as startup I
 
 ![Set as Startup](/ReadMeMedia/README_SetAsStartUp.JPG) "Set as startup")
 
+Next right click the Solution anc click 'Manage Nuget Packages for solution'
+
+![Manage Nuget Packages for solution](/ReadMeMedia/ManageNugetPackages.jpg) "Manage Nuget Packages")
+
+N0w check your INstalled packages as shown in the screenshot below. 
+At the time of writing (30th August 2024) the packages installed were
+AutoMapper v13.0.1
+Microsoft.EntityFrameworkCore.Design v8.0.8
+Microsoft.EntityFrameworkCore.SQLServer v8.0.8
+Microsoft.EntityFrameworkCore.Tools v8.0.8
+
+![MINstalled Nuget Packages](/ReadMeMedia/InstalledPackages.JPG) "Installed Packages")
+
