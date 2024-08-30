@@ -32,3 +32,12 @@ dotnet sdk check <br/>
 as you can see, I have .NET SDK 8.0.1 installed.
 ![dot NET SDK version installed](/ReadMeMedia/sdkVersion.jpg "Sdk Version")
 
+Now you need a database to connect to. Open the package manager console in Visual Studio. Try Tools -> Nuget PackageManager -> Package Manager Console.
+now type the command 'Update-Database'. This SHOULD create you a new car database based on the latest Entity Framework Migration I created. There is NO NEED
+TO RUN THE Add-Migration COMMAND SHOWN IN THE SCREENSHOT BELOW, just run Update-Database
+
+![Update database](/ReadMeMedia/UpdateDatabase.JPG "Update database")
+
+
+
+
