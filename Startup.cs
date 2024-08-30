@@ -69,6 +69,8 @@ namespace CarPriceComparison
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddAutoMapper(Assembly.GetExecutingAssembly(), Assembly.Load("CarPriceComparison"));
+
             services.AddLogging(loggingBuilder =>
             {
                 loggingBuilder.AddConsole();
@@ -88,20 +90,15 @@ namespace CarPriceComparison
             });
 
             var mapper = mapperConfig.CreateMapper();
-            app.ApplicationServices.AddSingleton(mapper);
 
-            //   Mapper.Initialize(cfg =>
-            //       cfg.AddProfiles(new [] {"CarPriceComparison"})
-            //   ); 
-
-            //   app.UseMvc( config =>{
-            //       config.MapRoute(
-            //           name    : "Default",
-            //           template: "{controller}/{action}/{id?}",
-            //           defaults: new {controller = "Home", action = "Index"}
-            //       );
-            //   });
-            //}
+            app.UseMvc(config =>
+            {
+                config.MapRoute(
+                    name: "Default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" }
+                );
+            });
         }
     }
 }
