@@ -10,6 +10,7 @@ using AutoMapper;
 using CarPriceComparison.ViewModels;
 using CarPriceComparison.Resolvers;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace CarPriceComparison
 {
@@ -26,7 +27,7 @@ namespace CarPriceComparison
                 .SetBasePath(_env.ContentRootPath)
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
-                
+
             _config = builder.Build();
         }
 
@@ -43,6 +44,18 @@ namespace CarPriceComparison
             });
 
             services.AddSingleton(_config);
+
+            services.AddSingleton<IMapper>(serviceProvider =>
+            {
+                var mapperConfig = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddMaps(Assembly.GetExecutingAssembly());
+                });
+                return mapperConfig.CreateMapper();
+            });
+
+
+
             //TO DO - understand the difference between AddTransient, AddScoped
             //and AddSingleton
             services.AddScoped<IMailService, DebugMailService>();
@@ -56,7 +69,7 @@ namespace CarPriceComparison
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddLogging(loggingBuilder => 
+            services.AddLogging(loggingBuilder =>
             {
                 loggingBuilder.AddConsole();
                 loggingBuilder.AddDebug();
@@ -66,20 +79,29 @@ namespace CarPriceComparison
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //very usefule reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
+            //very useful reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();
-            
-            Mapper.Initialize(cfg =>
-                cfg.AddProfiles(new [] {"CarPriceComparison"})
-            ); 
-            
-            app.UseMvc( config =>{
-                config.MapRoute(
-                    name    : "Default",
-                    template: "{controller}/{action}/{id?}",
-                    defaults: new {controller = "Home", action = "Index"}
-                );
+
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddMaps(Assembly.GetExecutingAssembly());
             });
-         }
+
+            var mapper = mapperConfig.CreateMapper();
+            app.ApplicationServices.AddSingleton(mapper);
+
+            //   Mapper.Initialize(cfg =>
+            //       cfg.AddProfiles(new [] {"CarPriceComparison"})
+            //   ); 
+
+            //   app.UseMvc( config =>{
+            //       config.MapRoute(
+            //           name    : "Default",
+            //           template: "{controller}/{action}/{id?}",
+            //           defaults: new {controller = "Home", action = "Index"}
+            //       );
+            //   });
+            //}
+        }
     }
 }
