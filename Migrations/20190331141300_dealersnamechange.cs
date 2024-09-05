@@ -2,7 +2,7 @@
 
 namespace CarPriceComparison.Migrations
 {
-    public partial class dealersnamechange : Migration
+    public partial class DealersNameChange : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

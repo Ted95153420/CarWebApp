@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPriceComparison.Migrations
 {
     [DbContext(typeof(VehicleContext))]
-    [Migration("20190704043811_picturesupport")]
-    partial class picturesupport
+    [Migration("20190704043811_PictureSupport")]
+    partial class PictureSupport
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

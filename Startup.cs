@@ -17,9 +17,9 @@ namespace CarPriceComparison
     public class Startup
     {
         private IConfigurationRoot _config;
-        private IHostingEnvironment _env;
+        private IWebHostEnvironment _env;
 
-        public Startup(IConfiguration configuration, IHostingEnvironment env_)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env_)
         {
             _env = env_;
             Configuration = configuration;
@@ -79,7 +79,7 @@ namespace CarPriceComparison
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //very useful reference - http://docs.automapper.org/en/stable/Custom-value-resolvers.html
             app.UseStaticFiles();

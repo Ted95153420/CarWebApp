@@ -2,7 +2,7 @@
 
 namespace CarPriceComparison.Migrations
 {
-    public partial class picturesupport : Migration
+    public partial class PictureSupport : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
