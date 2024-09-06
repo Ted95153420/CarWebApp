@@ -1,10 +1,13 @@
-# CarWebApp
-Public API that allows user to anonomously post how much they paid for their car.
-The idea is to build up an accurate database of used car prices
+# Project Overview
+Public API that allows user to anonymously post how much they paid for their car.
+The idea is to build up an accurate database of used car prices so that anyone looking to buy a car can look up past
+listings by country, city , dealership, car make and model - this will enable them to see how much the car was origionally
+listed for and how much it sold for and generally put the consumer in a better bargaining position
+
 This is non commercial - is mainly for academic purposes although feel free to contribute / suggest improvements.
 
 
-## Prerequisites / getting set up
+## Installation Instructions.
 
 Clone the git repository the URL is https://github.com/Ted95153420/CarWebApp.git
 
@@ -43,6 +46,13 @@ Use for the server name use '(localdb\MSSQLLocalDb)' for Authentication use 'Win
 Integrated Security =True)After you click connect you should see the VehicleIntelDb
 
 ![Vehicle Intelligence Database](/ReadMeMedia/VehicleIntelDb.jpg "Vehicle Intel database")
+
+
+
+## Useage.
+
+As of September 2024, this has not been published yet, but can be run locally.
+
 
 
 
