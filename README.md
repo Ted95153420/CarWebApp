@@ -41,9 +41,10 @@ TO RUN THE Add-Migration COMMAND SHOWN IN THE SCREENSHOT BELOW, just run Update-
 
 ![Update database](/ReadMeMedia/UpdateDatabase.JPG "Update database")
 
-That SHOULD have created an empty vehicles database for you. one way of checking this would be to open an instance of SQL Management Studio,
-Use for the server name use '(localdb\MSSQLLocalDb)' for Authentication use 'Window authentication' (behind the scenes the connection string uses
-Integrated Security =True)After you click connect you should see the VehicleIntelDb
+That will have created pre-seeded VehicleIntelDb for you. one way of checking this would be to open an instance of SQL Management Studio,
+Use for the server name use '(localdb)\MSSQLLocalDb' for Authentication use 'Window authentication' (behind the scenes the connection string uses
+Integrated Security =True) After you click connect you should see the VehicleIntelDb. The following tables will be pre populated with
+Data : City, Country, Dealer, VehicleMakes and VehicleModels
 
 ![Vehicle Intelligence Database](/ReadMeMedia/VehicleIntelDb.jpg "Vehicle Intel database")
 
