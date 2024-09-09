@@ -1,19 +1,23 @@
-
- # Use the official .NET Core SDK image as a base
-FROM mcr.microsoft.com/dotnet/sdk:8.0
-
+# Use the official .NET image as a parent image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
+EXPOSE 5000
 
-COPY *.csproj ./
-
-
-# Restore NuGet packages
-RUN dotnet restore
-
-# Copy the remaining files into the container
+# Use the SDK image to build the app
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["CarPriceComparison.csproj", "./"]
+RUN dotnet restore "CarPriceComparison.csproj"
 COPY . .
+WORKDIR "/src/."
+RUN dotnet build "CarPriceComparison.csproj" -c Release -o /app/build
 
-# Build the project
-RUN dotnet build -c Release
+# Publish the app
+FROM build AS publish
+RUN dotnet publish "CarPriceComparison.csproj" -c Release -o /app/publish
 
-CMD ["dotnet", "run", "&&", "tail", "-f", "/dev/null"]
+# Use the base image to run the app
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "CarPriceComparison.dll"]
