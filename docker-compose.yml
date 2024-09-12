@@ -1,0 +1,32 @@
+#version: '3.9'
+
+services:
+  sqlserver:
+    image: grimsbydocks/custom-sqlserver:latest
+    user: "0"
+    environment:
+      SA_PASSWORD: "IL4veMiD0g!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./setup.sql:/usr/src/app/setup.sql
+      - ./entrypoint.sh:/usr/src/app/entrypoint.sh
+    #entrypoint: ["/usr/src/app/entrypoint.sh"]
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  carwebapp:
+    image: grimsbydocks/carwebapp
+    ports:
+      - "8080:5000"
+    depends_on:
+      - sqlserver
+    secrets:
+      - db_connection_string_new_1
+    environment:
+      - ConnectionStrings__VehicleContextConnection=/run/secrets/db_connection_string_new_1
+
+
+secrets:
+  db_connection_string_new_1:
+    external: true

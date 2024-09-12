@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using System;
+using System.IO;
 using System.Reflection.Emit;
 
 namespace CarPriceComparison.Models
@@ -256,7 +259,19 @@ namespace CarPriceComparison.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder_)
         {
             base.OnConfiguring(optionsBuilder_);
-            optionsBuilder_.UseSqlServer(_config["ConnectionStrings:VehicleContextConnection"]);    
+            //var connectionString = _config["ConnectionStrings:VehicleContextConnection"];
+            //optionsBuilder_.UseSqlServer(_config["ConnectionStrings:VehicleContextConnection"]);
+            var secretPath = Environment.GetEnvironmentVariable("ConnectionStrings__VehicleContextConnection");
+            if (File.Exists(secretPath))
+            {
+                var connectionString = File.ReadAllText(secretPath);
+                Console.WriteLine($"Connection String: {connectionString}"); // Log the connection string
+                optionsBuilder_.UseSqlServer(connectionString);
+            }
+            else
+            {
+                throw new FileNotFoundException($"Secret file not found: {secretPath}");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder_)
