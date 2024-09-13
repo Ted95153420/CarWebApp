@@ -13,8 +13,7 @@ services:
     volumes:
       - ./setup.sql:/usr/src/app/setup.sql
       - ./entrypoint.sh:/usr/src/app/entrypoint.sh
-    #entrypoint: ["/usr/src/app/entrypoint.sh"]
-    entrypoint: ["tail", "-f", "/dev/null"]
+    entrypoint: ["/bin/bash", "/usr/src/app/entrypoint.sh"]
     secrets:
       - db_connection_string_new_1
 

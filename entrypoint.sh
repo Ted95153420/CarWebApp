@@ -1,6 +1,8 @@
-echo "Made it to entrypoint.sh" >> /proc/1/fd/1
 #!/bin/bash
 # entrypoint.sh
+
+mv CarPriceComparison.csproj TESTCarPriceComparison.csproj
+echo "Made it to entrypoint.sh" >> /proc/1/fd/1
 
 echo "Entry point script started..." >> /proc/1/fd/1
 
@@ -15,6 +17,9 @@ sleep 30s
 # Run Entity Framework migrations
 echo "Running Entity Framework migrations..." >> /proc/1/fd/1
 dotnet ef database update --project CarPriceComparison.csproj
+
+mv CarPriceComparison.csproj TESTCarPriceComparison.csproj
+
 echo "Running Entity Framework migrations..." >> /proc/1/fd/1
 
 # Run the setup script

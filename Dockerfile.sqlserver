@@ -30,6 +30,8 @@ RUN echo $PATH
 # Verify .NET SDK installation
 RUN dotnet --list-sdks
 
+# Change permissions of the /home/mssql directory
+RUN mkdir -p /home/mssql && chown -R mssql:mssql /home/mssql
 
 # Change permissions of the /home/mssql directory
 RUN mkdir -p /home/mssql && chown -R mssql:mssql /home/mssql
@@ -38,6 +40,9 @@ RUN mkdir -p /home/mssql && chown -R mssql:mssql /home/mssql
 # Copy the setup script and entrypoint script
 COPY setup.sql /usr/src/app/setup.sql
 COPY entrypoint.sh /usr/src/app/entrypoint.sh
+
+# Change ownership of the entrypoint script
+RUN chown mssql:mssql /usr/src/app/entrypoint.sh
 
 
 #Copy the csproj file
@@ -48,5 +53,6 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # Switch back to the default user
 USER mssql
 
+
 # Set the entry point
-ENTRYPOINT ["bash","/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["bin/bash", "/usr/src/app/entrypoint.sh"]
