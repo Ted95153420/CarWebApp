@@ -15,6 +15,7 @@ namespace CarPriceComparison
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Reached Program.cs");
             CreateWebHostBuilder(args).Build().Run();
         }
 

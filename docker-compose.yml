@@ -7,6 +7,7 @@ services:
     environment:
       SA_PASSWORD: "IL4veMiD0g!"
       ACCEPT_EULA: "Y"
+      DB_CONNECTION_STRING: /run/secrets/db_connection_string_new_1
     ports:
       - "1433:1433"
     volumes:
@@ -14,6 +15,8 @@ services:
       - ./entrypoint.sh:/usr/src/app/entrypoint.sh
     #entrypoint: ["/usr/src/app/entrypoint.sh"]
     entrypoint: ["tail", "-f", "/dev/null"]
+    secrets:
+      - db_connection_string_new_1
 
   carwebapp:
     image: grimsbydocks/carwebapp
