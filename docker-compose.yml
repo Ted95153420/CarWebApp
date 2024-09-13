@@ -7,7 +7,7 @@ services:
     environment:
       SA_PASSWORD: "IL4veMiD0g!"
       ACCEPT_EULA: "Y"
-      DB_CONNECTION_STRING: /run/secrets/db_connection_string_new_1
+      ConnectionStrings__VehicleContextConnection : /run/secrets/db_connection_string_new_1
     ports:
       - "1433:1433"
     volumes:
