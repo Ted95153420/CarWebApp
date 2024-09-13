@@ -49,4 +49,4 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 USER mssql
 
 # Set the entry point
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["bash","/usr/src/app/entrypoint.sh"]
