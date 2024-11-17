@@ -2,20 +2,25 @@
 
 services:
   sqlserver:
+    hostname: sqlserver
     image: grimsbydocks/custom-sqlserver:latest
     user: "0"
     environment:
       SA_PASSWORD: "IL4veMiD0g!"
+      MSSQL_USER: "edmilne"
+      MSSQL_PASSWORD: "Pru55iaRichard"
       ACCEPT_EULA: "Y"
-      ConnectionStrings__VehicleContextConnection : /run/secrets/db_connection_string_new_1
+      ConnectionStrings__VehicleContextConnection : /run/secrets/db_connection_string_new_2
     ports:
       - "1433:1433"
     volumes:
       - ./setup.sql:/usr/src/app/setup.sql
       - ./entrypoint.sh:/usr/src/app/entrypoint.sh
     entrypoint: ["/bin/bash", "/usr/src/app/entrypoint.sh"]
+    restart : "no"
+    #entrypoint: ["tail", "-f", "/dev/null"]
     secrets:
-      - db_connection_string_new_1
+      - db_connection_string_new_2
 
   carwebapp:
     image: grimsbydocks/carwebapp
@@ -24,11 +29,11 @@ services:
     depends_on:
       - sqlserver
     secrets:
-      - db_connection_string_new_1
+      - db_connection_string_new_2
     environment:
-      - ConnectionStrings__VehicleContextConnection=/run/secrets/db_connection_string_new_1
+      - ConnectionStrings__VehicleContextConnection=/run/secrets/db_connection_string_new_2
 
 
 secrets:
-  db_connection_string_new_1:
+  db_connection_string_new_2:
     external: true
