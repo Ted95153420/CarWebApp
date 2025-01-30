@@ -28,6 +28,13 @@ Microsoft.EntityFrameworkCore.Tools v8.0.8 <br/>
 
 Make sure the packages you have installed are at least at the versions stated above.
 
+commands I have run in the past - 
+
+docker stack deploy -c docker-compose.yml carwebapp
+docker push grimsbydocks/custom-sqlserver:latest
+docker build -t grimsbydocks/custom-sqlserver:latest -f Dockerfile.sqlserver .
+ docker build -t grimsbydocks/custom-sqlserver:v1 .
+
 ![Installed Nuget Packages](/ReadMeMedia/InstalledPackages.JPG "Installed Packages")
 
 Now check that you have .NET SDK 8.0.1 (or above) installed. Open a command prompt and run the command <br/>
